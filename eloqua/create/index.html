@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Eloqua Create URL Placeholder</title>
+
+  <!-- Allow Eloqua to frame this page (adjust hostname if needed) -->
+  <meta http-equiv="Content-Security-Policy"
+        content="frame-ancestors 'self' https://secure.p03.eloqua.com https://login.eloqua.com">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; color:#222; margin:28px; max-width:900px; }
+    header { background:#2AA198; color:#fff; padding:14px 18px; border-radius:6px; margin-bottom:18px; }
+    h1 { margin:0; font-size:20px; }
+    .card { border:1px solid #e2e2e2; padding:14px; border-radius:6px; background:#fbfbfb; }
+    button { background:#2AA198; color:#fff; border:none; padding:8px 12px; border-radius:4px; cursor:pointer; margin-right:8px; }
+    pre { background:#f4f4f4; padding:10px; border-radius:4px; white-space:pre-wrap; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Eloqua Create URL — Placeholder</h1>
+  </header>
+
+  <div class="card">
+    <p><strong>Purpose:</strong> This page is a harmless placeholder to use as the <em>Create URL</em> for an Eloqua Action Service. Eloqua only requires a reachable HTTPS URL here.</p>
+
+    <p>To use: enter the full HTTPS URL for this page into the Action Service <strong>Create URL</strong> field (for example <code>https://brendanelliscreative.dev/eloqua/create</code>).</p>
+
+    <h3>Optional: test embedding / content insertion</h3>
+    <p>If you later use this as a Content Service (an iframe inside Eloqua) you can click <strong>Insert sample content</strong> to post a sample HTML snippet to the parent frame via <code>postMessage</code>. Eloqua or your parent page can listen for this message and handle the HTML.</p>
+
+    <p>
+      <button id="insert">Insert sample content</button>
+      <button id="testFrame">Is framed?</button>
+    </p>
+
+    <pre id="out">Status: ready</pre>
+  </div>
+
+  <script>
+    // Sample snippet returned to parent if used as Content Service
+    var snippet = '<div style="border:2px solid #2AA198;padding:12px;border-radius:6px;"><h2>Sample content</h2><p>Inserted by placeholder.</p></div>';
+
+    document.getElementById('testFrame').addEventListener('click', function () {
+      var msg = (window.self !== window.top) ? 'This page is running inside an iframe.' : 'This page is NOT in an iframe.';
+      document.getElementById('out').textContent = msg;
+    });
+
+    document.getElementById('insert').addEventListener('click', function () {
+      try {
+        // Generic postMessage. Parent can listen for {type:'eloqua.content.insert', html: ...}
+        window.parent.postMessage({ type: 'eloqua.content.insert', html: snippet }, '*');
+        document.getElementById('out').textContent = 'Posted sample snippet to parent (postMessage).';
+      } catch (err) {
+        document.getElementById('out').textContent = 'postMessage failed: ' + err;
+      }
+    });
+  </script>
+</body>
+</html>
