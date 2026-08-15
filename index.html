@@ -18,7 +18,8 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;overflow-x:hidden}
+  html{background:var(--bg)}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:transparent;line-height:1.65;overflow-x:hidden}
   a{color:var(--cyan);text-decoration:none}
   .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
   .mono{font-family:'JetBrains Mono',monospace}
@@ -27,15 +28,16 @@
   /* space background */
   #stars{position:fixed;inset:0;z-index:-5;display:block}
   .nebula{position:fixed;inset:-12%;z-index:-4;background:
-     radial-gradient(900px 620px at 12% -8%,rgba(59,130,246,.26),transparent 60%),
-     radial-gradient(820px 560px at 108% 6%,rgba(168,85,247,.24),transparent 58%),
-     radial-gradient(760px 620px at 78% 108%,rgba(236,72,153,.18),transparent 60%),
-     radial-gradient(700px 560px at 20% 118%,rgba(249,115,22,.14),transparent 60%),
+     radial-gradient(900px 620px at 12% -8%,rgba(25,105,255,.48),transparent 62%),
+     radial-gradient(820px 560px at 108% 6%,rgba(155,45,255,.42),transparent 60%),
+     radial-gradient(760px 620px at 78% 108%,rgba(255,35,145,.34),transparent 62%),
+     radial-gradient(700px 560px at 20% 118%,rgba(255,95,15,.27),transparent 62%),
      var(--bg);animation:nebula-drift 28s ease-in-out infinite alternate;will-change:transform}
-  .cosmic-cloud{position:fixed;width:46vw;height:46vw;min-width:420px;min-height:420px;border-radius:50%;z-index:-3;pointer-events:none;filter:blur(72px);opacity:.15;mix-blend-mode:screen;will-change:transform}
+  .cosmic-cloud{position:fixed;width:52vw;height:52vw;min-width:460px;min-height:460px;border-radius:50%;z-index:-3;pointer-events:none;filter:blur(54px);opacity:.42;mix-blend-mode:screen;will-change:transform}
   .cloud-one{left:-18vw;top:22vh;background:radial-gradient(circle,rgba(34,211,238,.8),rgba(59,130,246,.28) 42%,transparent 70%);animation:cloud-one 24s ease-in-out infinite alternate}
   .cloud-two{right:-20vw;top:48vh;background:radial-gradient(circle,rgba(236,72,153,.72),rgba(168,85,247,.28) 42%,transparent 70%);animation:cloud-two 31s ease-in-out infinite alternate}
-  .orbit{position:fixed;z-index:-2;border:1px solid rgba(125,190,255,.11);border-radius:50%;pointer-events:none;transform:rotate(-18deg)}
+  .aurora{position:fixed;inset:-30%;z-index:-2;pointer-events:none;opacity:.25;background:conic-gradient(from 210deg at 50% 50%,transparent 0 15%,rgba(34,211,238,.34) 23%,transparent 31% 48%,rgba(168,85,247,.34) 57%,transparent 66% 79%,rgba(249,115,22,.24) 87%,transparent 94%);filter:blur(70px);animation:aurora-turn 38s linear infinite;will-change:transform}
+  .orbit{position:fixed;z-index:-2;border:1px solid rgba(125,210,255,.24);border-radius:50%;pointer-events:none;transform:rotate(-18deg);box-shadow:0 0 20px rgba(34,211,238,.08)}
   .orbit-one{width:520px;height:190px;left:-170px;top:36vh;animation:orbit-pulse 9s ease-in-out infinite}
   .orbit-two{width:600px;height:220px;right:-230px;top:70vh;border-color:rgba(236,72,153,.10);animation:orbit-pulse 12s ease-in-out -4s infinite}
   .meteor{position:fixed;z-index:-1;width:150px;height:2px;pointer-events:none;opacity:0;background:linear-gradient(90deg,transparent,rgba(180,225,255,.85),#fff);border-radius:999px;filter:drop-shadow(0 0 6px rgba(80,190,255,.9));transform:rotate(-28deg)}
@@ -45,6 +47,7 @@
   .meteor-three{top:82%;left:-180px;animation:shoot 19s linear 11s infinite}
   .vign{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(120% 90% at 50% 0%,transparent 50%,rgba(0,0,0,.62) 100%)}
   @keyframes nebula-drift{0%{transform:translate3d(-2%,-1%,0) scale(1)}100%{transform:translate3d(3%,2%,0) scale(1.08)}}
+  @keyframes aurora-turn{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.1)}100%{transform:rotate(360deg) scale(1)}}
   @keyframes cloud-one{0%{transform:translate3d(-4%,0,0) scale(.9)}100%{transform:translate3d(28%,12%,0) scale(1.12)}}
   @keyframes cloud-two{0%{transform:translate3d(3%,8%,0) scale(1.05)}100%{transform:translate3d(-30%,-12%,0) scale(.88)}}
   @keyframes orbit-pulse{0%,100%{opacity:.28;transform:rotate(-18deg) scale(.96)}50%{opacity:.7;transform:rotate(-12deg) scale(1.05)}}
@@ -80,13 +83,16 @@
   .btn-ghost{border-color:var(--line);color:var(--ink);background:rgba(255,255,255,.03)}
   .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
 
-  section{position:relative;padding:74px 0}
+  section{position:relative;padding:74px 0;border-top:1px solid rgba(120,170,255,.04)}
+  section:nth-of-type(3n+1){background:linear-gradient(100deg,rgba(20,95,255,.075),transparent 44%,rgba(140,45,255,.06))}
+  section:nth-of-type(3n+2){background:linear-gradient(100deg,rgba(170,45,255,.065),transparent 48%,rgba(255,40,140,.07))}
+  section:nth-of-type(3n){background:linear-gradient(100deg,rgba(255,85,20,.045),transparent 45%,rgba(25,190,255,.065))}
   .kicker{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}
   section h2{font-size:34px;font-weight:800;letter-spacing:-.5px;margin-bottom:8px}
   section .sub{color:var(--muted);margin-bottom:36px;font-size:16px}
 
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-  .stat{position:relative;background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:16px;padding:26px 18px;overflow:hidden;transition:.25s}
+  .stat{position:relative;background:linear-gradient(155deg,rgba(25,35,82,.94),rgba(9,11,26,.96));border:1px solid rgba(105,145,255,.18);border-radius:16px;padding:26px 18px;overflow:hidden;transition:.25s;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
   .stat::before{content:"";position:absolute;inset:0;background:var(--grad);opacity:0;transition:.3s}
   .stat:hover{transform:translateY(-3px);border-color:rgba(168,85,247,.45)}
   .stat:hover::before{opacity:.07}
@@ -100,7 +106,7 @@
   .pillar p{font-size:14.5px;color:var(--muted)}
 
   .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-  .card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;transition:.25s;overflow:hidden}
+  .card{position:relative;background:linear-gradient(145deg,rgba(18,22,58,.96),rgba(11,13,33,.96));border:1px solid rgba(125,105,255,.19);border-radius:18px;padding:28px;transition:.25s;overflow:hidden;box-shadow:0 12px 42px rgba(5,5,20,.22),inset 0 1px 0 rgba(255,255,255,.035)}
   .card::before{content:"";position:absolute;inset:-1px;border-radius:18px;padding:1px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:.25s}
   .card:hover{transform:translateY(-4px);background:var(--panel2)}
   .card:hover::before{opacity:1}
@@ -162,7 +168,7 @@
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
-    .nebula,.cosmic-cloud,.orbit,.meteor,.logo-frame,.eyebrow .pulse{animation:none!important}
+    .nebula,.cosmic-cloud,.aurora,.orbit,.meteor,.logo-frame,.eyebrow .pulse{animation:none!important}
     .meteor{display:none}
     .reveal{opacity:1;transform:none;transition:none}
   }
@@ -173,6 +179,7 @@
 <div class="nebula"></div>
 <div class="cosmic-cloud cloud-one"></div>
 <div class="cosmic-cloud cloud-two"></div>
+<div class="aurora"></div>
 <div class="orbit orbit-one"></div>
 <div class="orbit orbit-two"></div>
 <div class="meteor meteor-one"></div>
