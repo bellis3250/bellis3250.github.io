@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brendan Ellis Creative — B2B Marketing Leader</title>
 <meta name="description" content="Brendan Ellis Creative — Demand generation and partner marketing leader. MDF programs, national events, and omni-channel campaigns in B2B tech.">
-<link rel="icon" type="image/png" href="BEC-logo.png">
+<link rel="icon" type="image/png" href="BECV-dark-background.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
@@ -25,14 +25,30 @@
   .gtext{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 
   /* space background */
-  #stars{position:fixed;inset:0;z-index:-3;display:block}
-  .nebula{position:fixed;inset:0;z-index:-2;background:
-     radial-gradient(900px 620px at 12% -8%,rgba(59,130,246,.22),transparent 60%),
-     radial-gradient(820px 560px at 108% 6%,rgba(168,85,247,.20),transparent 58%),
-     radial-gradient(760px 620px at 78% 108%,rgba(236,72,153,.16),transparent 60%),
-     radial-gradient(700px 560px at 20% 118%,rgba(249,115,22,.12),transparent 60%),
-     var(--bg)}
-  .vign{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(120% 90% at 50% 0%,transparent 55%,rgba(0,0,0,.55) 100%)}
+  #stars{position:fixed;inset:0;z-index:-5;display:block}
+  .nebula{position:fixed;inset:-12%;z-index:-4;background:
+     radial-gradient(900px 620px at 12% -8%,rgba(59,130,246,.26),transparent 60%),
+     radial-gradient(820px 560px at 108% 6%,rgba(168,85,247,.24),transparent 58%),
+     radial-gradient(760px 620px at 78% 108%,rgba(236,72,153,.18),transparent 60%),
+     radial-gradient(700px 560px at 20% 118%,rgba(249,115,22,.14),transparent 60%),
+     var(--bg);animation:nebula-drift 28s ease-in-out infinite alternate;will-change:transform}
+  .cosmic-cloud{position:fixed;width:46vw;height:46vw;min-width:420px;min-height:420px;border-radius:50%;z-index:-3;pointer-events:none;filter:blur(72px);opacity:.15;mix-blend-mode:screen;will-change:transform}
+  .cloud-one{left:-18vw;top:22vh;background:radial-gradient(circle,rgba(34,211,238,.8),rgba(59,130,246,.28) 42%,transparent 70%);animation:cloud-one 24s ease-in-out infinite alternate}
+  .cloud-two{right:-20vw;top:48vh;background:radial-gradient(circle,rgba(236,72,153,.72),rgba(168,85,247,.28) 42%,transparent 70%);animation:cloud-two 31s ease-in-out infinite alternate}
+  .orbit{position:fixed;z-index:-2;border:1px solid rgba(125,190,255,.11);border-radius:50%;pointer-events:none;transform:rotate(-18deg)}
+  .orbit-one{width:520px;height:190px;left:-170px;top:36vh;animation:orbit-pulse 9s ease-in-out infinite}
+  .orbit-two{width:600px;height:220px;right:-230px;top:70vh;border-color:rgba(236,72,153,.10);animation:orbit-pulse 12s ease-in-out -4s infinite}
+  .meteor{position:fixed;z-index:-1;width:150px;height:2px;pointer-events:none;opacity:0;background:linear-gradient(90deg,transparent,rgba(180,225,255,.85),#fff);border-radius:999px;filter:drop-shadow(0 0 6px rgba(80,190,255,.9));transform:rotate(-28deg)}
+  .meteor::after{content:"";position:absolute;right:0;top:-2px;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 12px #7dd3fc}
+  .meteor-one{top:18%;left:-190px;animation:shoot 11s linear 1s infinite}
+  .meteor-two{top:58%;left:-220px;animation:shoot 15s linear 6s infinite}
+  .meteor-three{top:82%;left:-180px;animation:shoot 19s linear 11s infinite}
+  .vign{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(120% 90% at 50% 0%,transparent 50%,rgba(0,0,0,.62) 100%)}
+  @keyframes nebula-drift{0%{transform:translate3d(-2%,-1%,0) scale(1)}100%{transform:translate3d(3%,2%,0) scale(1.08)}}
+  @keyframes cloud-one{0%{transform:translate3d(-4%,0,0) scale(.9)}100%{transform:translate3d(28%,12%,0) scale(1.12)}}
+  @keyframes cloud-two{0%{transform:translate3d(3%,8%,0) scale(1.05)}100%{transform:translate3d(-30%,-12%,0) scale(.88)}}
+  @keyframes orbit-pulse{0%,100%{opacity:.28;transform:rotate(-18deg) scale(.96)}50%{opacity:.7;transform:rotate(-12deg) scale(1.05)}}
+  @keyframes shoot{0%,82%{opacity:0;transform:translate3d(0,0,0) rotate(-28deg)}84%{opacity:1}92%{opacity:.9}100%{opacity:0;transform:translate3d(125vw,68vh,0) rotate(-28deg)}}
 
   /* nav */
   nav{position:sticky;top:0;z-index:30;background:rgba(5,6,15,.62);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
@@ -144,15 +160,28 @@
     header.hero h1{font-size:40px}nav .links{display:none}section{padding:56px 0}.contact-wrap{padding:34px 20px}
     .logo-frame{padding:14px 17px;border-radius:22px;margin-bottom:26px}.logo-badge{width:190px}
   }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .nebula,.cosmic-cloud,.orbit,.meteor,.logo-frame,.eyebrow .pulse{animation:none!important}
+    .meteor{display:none}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
 </style>
 </head>
 <body>
 <canvas id="stars"></canvas>
 <div class="nebula"></div>
+<div class="cosmic-cloud cloud-one"></div>
+<div class="cosmic-cloud cloud-two"></div>
+<div class="orbit orbit-one"></div>
+<div class="orbit orbit-two"></div>
+<div class="meteor meteor-one"></div>
+<div class="meteor meteor-two"></div>
+<div class="meteor meteor-three"></div>
 <div class="vign"></div>
 
 <nav><div class="wrap">
-  <span class="brand"><img src="BEC-logo.png" alt="Brendan Ellis Creative logo"><span class="bt">BRENDAN ELLIS<span class="c">CREATIVE</span></span></span>
+  <span class="brand"><img src="BECV-dark-background.png" alt="Brendan Ellis Creative logo"><span class="bt">BRENDAN ELLIS<span class="c">CREATIVE</span></span></span>
   <div class="links">
     <a href="#about">About</a>
     <a href="#impact">Impact</a>
@@ -164,7 +193,7 @@
 </div></nav>
 
 <header class="hero"><div class="wrap">
-  <div class="logo-frame"><img class="logo-badge" src="BEC-logo.png" alt="Brendan Ellis Creative"></div>
+  <div class="logo-frame"><img class="logo-badge" src="BECV-dark-background.png" alt="Brendan Ellis Creative"></div>
   <div><span class="eyebrow"><span class="pulse"></span>Demand Gen · Partner Marketing · B2B Tech</span></div>
   <h1>Turning partner funding into <span class="gtext">measurable pipeline.</span></h1>
   <div class="role">Partner &amp; Channel Marketing<span class="sep">/</span>Demand Generation<span class="sep">/</span>Events</div>
@@ -275,15 +304,16 @@
   </div>
 </div></section>
 
-<footer><img src="BEC-logo.png" alt="BE Creative"> Brendan Ellis Creative · © 2026 · deployed on GitHub Pages</footer>
+<footer><img src="BECV-dark-background.png" alt="BE Creative"> Brendan Ellis Creative · © 2026 · deployed on GitHub Pages</footer>
 
 <script>
   // starfield
   const cv=document.getElementById('stars'),ctx=cv.getContext('2d');let W,H,stars;
-  function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;stars=Array.from({length:Math.min(220,Math.floor(W*H/9000))},()=>({x:Math.random()*W,y:Math.random()*H,z:Math.random()*1.4+.3,tw:Math.random()*Math.PI*2}))}
+  const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;stars=Array.from({length:Math.min(340,Math.floor(W*H/6200))},()=>({x:Math.random()*W,y:Math.random()*H,z:Math.random()*1.8+.25,tw:Math.random()*Math.PI*2,drift:(Math.random()-.5)*.035}))}
   resize();addEventListener('resize',resize);
-  const cols=['255,255,255','160,200,255','230,170,255','255,190,150'];
-  function draw(t){ctx.clearRect(0,0,W,H);for(const s of stars){s.y+=s.z*0.12;if(s.y>H){s.y=0;s.x=Math.random()*W;}const a=0.5+0.5*Math.sin(t/700+s.tw);const c=cols[Math.floor((s.x+s.y)%cols.length)];ctx.beginPath();ctx.fillStyle='rgba('+c+','+(a*0.9)+')';ctx.arc(s.x,s.y,s.z,0,7);ctx.fill();}requestAnimationFrame(draw);}
+  const cols=['255,255,255','150,205,255','225,165,255','255,185,145','120,230,255'];
+  function draw(t){ctx.clearRect(0,0,W,H);for(const s of stars){if(!reduceMotion){s.y+=s.z*.095;s.x+=s.drift*s.z}if(s.y>H){s.y=0;s.x=Math.random()*W}if(s.x<0)s.x=W;if(s.x>W)s.x=0;const a=.35+.65*Math.sin(t/(520+s.z*160)+s.tw);const c=cols[Math.floor((s.x+s.y)%cols.length)];ctx.beginPath();ctx.fillStyle='rgba('+c+','+(Math.max(.12,a)*.92)+')';ctx.shadowColor='rgba('+c+',.55)';ctx.shadowBlur=s.z>1.35?5:0;ctx.arc(s.x,s.y,s.z,0,Math.PI*2);ctx.fill()}ctx.shadowBlur=0;if(!reduceMotion)requestAnimationFrame(draw)}
   requestAnimationFrame(draw);
   // reveal
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
