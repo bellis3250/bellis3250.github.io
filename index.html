@@ -38,16 +38,18 @@
   nav{position:sticky;top:0;z-index:30;background:rgba(5,6,15,.62);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
   nav .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.4px}
-  nav .brand img{width:38px;height:38px;filter:drop-shadow(0 0 10px rgba(59,130,246,.5))}
-  nav .brand .bt{font-family:'Orbitron',sans-serif;font-size:15px}
-  nav .brand .bt .c{color:var(--muted);font-weight:600;font-size:11px;letter-spacing:3px;display:block;margin-top:-2px}
+  nav .brand img{width:44px;height:44px;object-fit:contain;padding:4px;border:1px solid rgba(34,211,238,.24);border-radius:12px;background:radial-gradient(circle at 50% 35%,rgba(80,190,255,.22),rgba(14,18,44,.88) 70%);box-shadow:0 0 18px rgba(34,211,238,.16),inset 0 0 12px rgba(255,255,255,.04);filter:drop-shadow(0 0 8px rgba(59,130,246,.55))}
+  nav .brand .bt{font-family:'Orbitron',sans-serif;font-size:15px;color:#f5f8ff;text-shadow:0 0 12px rgba(120,200,255,.22)}
+  nav .brand .bt .c{color:var(--cyan);font-weight:600;font-size:11px;letter-spacing:3px;display:block;margin-top:-2px;text-shadow:0 0 10px rgba(34,211,238,.34)}
   nav .links a{color:var(--muted);margin-left:22px;font-size:14px;font-weight:500;transition:.2s}
   nav .links a:hover{color:var(--ink)}
 
   /* hero */
   header.hero{position:relative;padding:64px 0 84px;text-align:center}
-  .logo-badge{width:150px;height:150px;margin:0 auto 26px;filter:drop-shadow(0 0 34px rgba(168,85,247,.45));animation:hover 6s ease-in-out infinite}
-  @keyframes hover{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .logo-frame{position:relative;display:inline-flex;align-items:center;justify-content:center;margin:0 auto 30px;padding:18px 24px;border:1px solid rgba(90,210,255,.30);border-radius:26px;background:radial-gradient(circle at 50% 35%,rgba(65,175,255,.24),rgba(22,26,60,.76) 64%,rgba(8,10,28,.90) 100%);box-shadow:0 0 38px rgba(34,211,238,.20),0 0 76px rgba(168,85,247,.14),inset 0 0 28px rgba(255,255,255,.045);backdrop-filter:blur(10px);animation:hover 6s ease-in-out infinite}
+  .logo-frame::before{content:"";position:absolute;inset:-2px;border-radius:28px;background:var(--grad);opacity:.18;filter:blur(16px);z-index:-1}
+  .logo-badge{display:block;width:230px;height:auto;filter:drop-shadow(0 0 11px rgba(34,211,238,.42)) drop-shadow(0 0 25px rgba(168,85,247,.28))}
+  @keyframes hover{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
   .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--cyan);border:1px solid var(--line);background:rgba(34,211,238,.06);padding:7px 15px;border-radius:999px}
   .eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--cyan);animation:pulse 2s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,211,238,.5)}70%{box-shadow:0 0 0 10px rgba(34,211,238,0)}100%{box-shadow:0 0 0 0 rgba(34,211,238,0)}}
@@ -140,7 +142,7 @@
   @media(max-width:860px){
     .stats{grid-template-columns:repeat(2,1fr)}.cards,.pillars{grid-template-columns:1fr}.vgrid{grid-template-columns:1fr}
     header.hero h1{font-size:40px}nav .links{display:none}section{padding:56px 0}.contact-wrap{padding:34px 20px}
-    .logo-badge{width:120px;height:120px}
+    .logo-frame{padding:14px 17px;border-radius:22px;margin-bottom:26px}.logo-badge{width:190px}
   }
 </style>
 </head>
@@ -162,7 +164,7 @@
 </div></nav>
 
 <header class="hero"><div class="wrap">
-  <img class="logo-badge" src="BEC-logo.png" alt="Brendan Ellis Creative">
+  <div class="logo-frame"><img class="logo-badge" src="BEC-logo.png" alt="Brendan Ellis Creative"></div>
   <div><span class="eyebrow"><span class="pulse"></span>Demand Gen · Partner Marketing · B2B Tech</span></div>
   <h1>Turning partner funding into <span class="gtext">measurable pipeline.</span></h1>
   <div class="role">Partner &amp; Channel Marketing<span class="sep">/</span>Demand Generation<span class="sep">/</span>Events</div>
