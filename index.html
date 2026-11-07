@@ -116,6 +116,9 @@
   .card ul{margin:14px 0 0 2px;list-style:none}
   .card li{font-size:14px;color:var(--ink);margin-bottom:8px;padding-left:22px;position:relative}
   .card li::before{content:"▹";position:absolute;left:0;color:var(--cyan)}
+  .card.featured{border-color:rgba(34,211,238,.38);background:linear-gradient(145deg,rgba(22,45,82,.98),rgba(18,14,48,.98))}
+  .card-link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 15px;border:1px solid rgba(34,211,238,.38);border-radius:10px;color:var(--cyan);font-weight:700;font-size:14px;position:relative;z-index:2}
+  .card-link:hover{background:rgba(34,211,238,.10);border-color:var(--cyan);transform:translateY(-1px)}
 
   /* timeline */
   .timeline{position:relative;margin-top:8px;padding-left:34px}
@@ -242,10 +245,12 @@
 </div></section>
 
 <section id="projects"><div class="wrap reveal">
-  <div class="kicker">// flagship projects</div>
-  <h2>Programs I led</h2>
-  <p class="sub">Real work, sanitized of confidential detail</p>
+  <div class="kicker">// portfolio</div>
+  <h2>Interactive work and flagship programs</h2>
+  <p class="sub">Public-facing previews with internal materials removed</p>
   <div class="cards">
+    <div class="card featured"><span class="tag">Interactive / 3D</span><h3>The Connected Warehouse</h3><p>An isometric, interactive warehouse journey that turns RFID, mobility, wireless networking, and fulfillment technology into a visual story.</p><ul><li>Five-stage journey from receiving through shipping</li><li>Selectable RFID, wireless, device, and order-flow layers</li><li>Built as a scalable campaign and sales-storytelling concept</li></ul><a class="card-link" href="portfolio/connected-warehouse/" target="_blank" rel="noopener">View interactive experience ↗</a></div>
+    <div class="card featured"><span class="tag">Interactive / RFID</span><h3>Stuck to Scaled</h3><p>A stage-based retail RFID experience designed to help buyers visualize the path from a focused pilot to a repeatable program.</p><ul><li>Crawl, walk, and run program framework</li><li>Retail workflow visualization and stage-based messaging</li><li>Public portfolio edition with lead capture removed</li></ul><a class="card-link" href="portfolio/stuck-to-scaled/" target="_blank" rel="noopener">View interactive experience ↗</a></div>
     <div class="card"><span class="tag">Partner / MDF</span><h3>Multi-partner MDF reporting suite</h3><p>Built the quarterly MDF reporting and claim-packaging process across partners.</p><ul><li>Partner-exclusive performance recaps and program summaries</li><li>Claim-status and deadline-risk tracking that protects reimbursement</li><li>System managing 100+ activities and 1,000+ tasks</li></ul></div>
     <div class="card"><span class="tag">Campaigns</span><h3>OEM targeted-account campaigns</h3><p>Zebra and Honeywell targeted-account and reactivation programs.</p><ul><li>$5M+ campaign revenue and up to 37x combined MDF ROI</li><li>Hundreds of closed opportunities across targeted accounts</li><li>Mobile computing, printing, scanning, and trade-in plays</li></ul></div>
     <div class="card"><span class="tag">Healthcare GTM</span><h3>Zebra–Levata clinical-mobility GTM</h3><p>Co-branded healthcare GTM to reach clinical decision-makers, funded through OEM MDF.</p><ul><li>Co-branded flyers, infographics, purpose-built tablet content</li><li>Co-branded Becker's Healthcare webinar, built and promoted</li></ul></div>
