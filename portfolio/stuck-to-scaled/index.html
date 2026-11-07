@@ -305,7 +305,7 @@ h2{font-size:12px;font-weight:500;color:var(--muted);margin:24px 0 10px}
     <div class="bar-act">
       <span class="bar-tag">NRF 2027 concept build &middot; <b>Levata + Zebra</b></span>
       <button class="bbtn" id="btn-rail" aria-expanded="false" aria-controls="rail">Stage details</button>
-      <button class="bbtn primary" id="btn-pb">Get the playbook</button>
+      <button class="bbtn primary" id="btn-pb">Explore stage plan</button>
     </div>
   </header>
 
@@ -756,9 +756,9 @@ function railOpen(on){ shellEl.classList.toggle('rail-open',on); $('btn-rail').s
 $('btn-rail').addEventListener('click', function(){ railOpen(!shellEl.classList.contains('rail-open')); });
 $('rail-x').addEventListener('click', function(){ railOpen(false); });
 $('btn-pb').addEventListener('click', function(){
-  if(window.innerWidth<1500) railOpen(true);
-  var g=$('gate'); setTimeout(function(){ try{ g.scrollIntoView({behavior:REDUCED?'auto':'smooth',block:'center'}); }catch(e){} },window.innerWidth<1500?300:0);
-  openGate('Playbook');
+  railOpen(true);
+  var rail=document.querySelector('.rail');
+  if(rail) setTimeout(function(){ try{ rail.scrollIntoView({behavior:REDUCED?'auto':'smooth',block:'nearest'}); }catch(e){} },300);
 });
 $('brk-h').addEventListener('click', function(){ if(!stageBox.classList.contains('compact')) return; var b=$('brk'); var o=!b.classList.contains('open'); b.classList.toggle('open',o); this.setAttribute('aria-expanded',o?'true':'false'); $('brk-car').innerHTML=o?'Hide &#9652;':'Show &#9662;'; });
 document.addEventListener('keydown', function(e){ if(e.key==='Escape' && shellEl.classList.contains('rail-open')) railOpen(false); });
