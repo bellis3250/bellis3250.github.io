@@ -1,5 +1,1492 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stuck to Scaled | Interactive RFID Concept</title><meta name="description" content="A public portfolio preview of an interactive retail RFID storytelling concept."><style>
-:root{--ink:#f8f7ff;--muted:#b9b6ca;--purple:#7b4dff;--cyan:#50dbff;--bg:#090815}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0,#24134f,transparent 36%),radial-gradient(circle at 100% 70%,#0b6172,transparent 34%),var(--bg);color:var(--ink);font-family:Inter,Segoe UI,sans-serif;min-height:100vh}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}header{display:flex;justify-content:space-between;align-items:center;padding:22px 0}header img{width:130px}.badge{font-size:12px;letter-spacing:.14em;border:1px solid #ffffff2b;border-radius:999px;padding:8px 12px;color:var(--cyan)}main{padding:38px 0 70px}.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--cyan);font-weight:700}.hero{max-width:850px}.hero h1{font-size:clamp(42px,7vw,86px);line-height:.95;margin:16px 0;background:linear-gradient(100deg,#fff,#a8eaff 45%,#b798ff);-webkit-background-clip:text;color:transparent}.hero p{font-size:19px;line-height:1.7;color:var(--muted)}.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:34px 0 22px}.stages button{border:1px solid #ffffff24;background:#ffffff09;color:var(--ink);padding:15px;border-radius:14px;font-weight:700;cursor:pointer}.stages button.active{border-color:var(--cyan);background:linear-gradient(135deg,#7045db55,#2bc6e633)}.experience{display:grid;grid-template-columns:1.35fr .65fr;gap:20px;background:#0c0b1bd9;border:1px solid #ffffff20;border-radius:24px;overflow:hidden;box-shadow:0 28px 80px #0008}.visual{min-height:470px;background:#111}.visual img{width:100%;height:100%;min-height:470px;object-fit:cover;display:block}.copy{padding:34px}.copy h2{font-size:34px;margin:10px 0}.copy p{color:var(--muted);line-height:1.7}.list{padding:0;list-style:none}.list li{padding:11px 0;border-top:1px solid #ffffff16}.note{margin-top:22px;font-size:13px;color:#9993ae}footer{padding:26px 0;color:#908aa5;font-size:13px}@media(max-width:760px){.experience{grid-template-columns:1fr}.stages{grid-template-columns:1fr}.visual,.visual img{min-height:300px}.copy{padding:24px}}
-</style></head><body><div class="wrap"><header><img src="img/levata-logo-wht.png" alt="Levata"><span class="badge">PORTFOLIO PREVIEW</span></header><main><div class="hero"><div class="eyebrow">INTERACTIVE RETAIL RFID STORYTELLING</div><h1>From stuck pilot to scaled program.</h1><p>A stage-based digital experience that helps retail teams visualize how RFID can progress from a focused assessment to connected store operations.</p></div><div class="stages"><button class="active" data-stage="0">01 · Crawl</button><button data-stage="1">02 · Walk</button><button data-stage="2">03 · Run</button></div><section class="experience"><div class="visual"><img id="stage-img" src="img/recv.jpg" alt="Retail RFID receiving workflow"></div><div class="copy"><div class="eyebrow" id="stage-k">CRAWL · ASSESS</div><h2 id="stage-title">Prove the workflow.</h2><p id="stage-copy">Start with one defined process, establish the baseline, and identify where better item visibility can reduce friction.</p><ul class="list" id="stage-list"><li>Map the current receiving process</li><li>Define a measurable pilot</li><li>Assign clear ownership</li></ul><p class="note">Public portfolio version. Lead capture and internal campaign materials are excluded.</p></div></section></main><footer>Interactive marketing concept · Brendan Ellis portfolio</footer></div><script>
-const stages=[{k:'CRAWL · ASSESS',t:'Prove the workflow.',p:'Start with one defined process, establish the baseline, and identify where better item visibility can reduce friction.',i:'img/recv.jpg',a:'Retail RFID receiving workflow',l:['Map the current receiving process','Define a measurable pilot','Assign clear ownership']},{k:'WALK · CONNECT',t:'Connect store operations.',p:'Expand visibility across inventory zones and establish repeatable workflows for associates and store leaders.',i:'img/stock.jpg',a:'Retail RFID stockroom workflow',l:['Connect receiving and stockroom activity','Standardize exception handling','Measure adoption and accuracy']},{k:'RUN · SCALE',t:'Turn visibility into action.',p:'Scale the operating model across locations with shared measurement, governance, and integration into core systems.',i:'img/floor.jpg',a:'Scaled RFID store workflow',l:['Integrate inventory signals','Create a repeatable rollout model','Track program-level outcomes']}];document.querySelectorAll('[data-stage]').forEach((b,i)=>b.onclick=()=>{document.querySelectorAll('[data-stage]').forEach(x=>x.classList.remove('active'));b.classList.add('active');const s=stages[i];document.querySelector('#stage-k').textContent=s.k;document.querySelector('#stage-title').textContent=s.t;document.querySelector('#stage-copy').textContent=s.p;const im=document.querySelector('#stage-img');im.src=s.i;im.alt=s.a;document.querySelector('#stage-list').innerHTML=s.l.map(x=>`<li>${x}</li>`).join('')});
-</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stuck to Scaled</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend+Exa:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: booth instrument panel. Live store diorama left, stage narrative rail right; stacks on phones.
+   Brand: Levata guidelines (Dec 2023). Purple Black ground, purple-to-blue gradient as the single accent.
+   Type: Termina is the brand heading face (Adobe Fonts). Lexend Exa stands in until the Adobe kit is wired. Inter for body. Plex Mono for live system readouts only. */
+:root{
+  --pblack:#000021; --ink-2:#06072b; --ink-3:#0d0f3a;
+  --fg:#ffffff; --body:#c9cbe0; --muted:#82839f; --faint:#727392;
+  --violet:#784dff; --peri:#7070ff; --blue:#1f69ff; --azure:#1898ff;
+  --amber:#ffb547; --blind:#ff7a85;
+  --line:rgba(130,131,159,.22); --line-2:rgba(130,131,159,.42);
+  --grad:linear-gradient(120deg,#784dff 0%,#1f69ff 60%,#1898ff 100%);
+  --head:'Lexend Exa','Termina',system-ui,sans-serif;
+  --body-f:'Inter',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--pblack);color:var(--fg);font-family:var(--body-f);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--ink-2)}
+.shell{height:100%;display:flex;flex-direction:column;min-height:0}
+
+.bar{flex:none;display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:var(--ink-2);border-bottom:1px solid var(--line);
+  padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.logo{height:22px;width:auto;display:block}
+.bar-sep{width:1px;height:20px;background:var(--line-2)}
+.bar-name{font-family:var(--head);font-weight:500;font-size:12.5px;letter-spacing:.01em}
+.bar-name span{color:var(--muted);font-family:var(--body-f);font-weight:500;letter-spacing:0;margin-left:6px}
+.bar-tag{margin-left:auto;font-size:12px;color:var(--muted);font-weight:500}
+.bar-tag b{font-weight:600;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.layout{flex:1;min-height:0;display:grid;grid-template-columns:1fr 400px}
+
+.stage{position:relative;min-width:0;overflow:hidden;background:radial-gradient(110% 85% at 50% 30%,#10124a 0%,#05062e 50%,#000021 100%)}
+#scene{position:absolute;inset:0}
+#scene canvas{display:block;outline:none}
+#labels{position:absolute;inset:0;pointer-events:none}
+.stage{user-select:none;-webkit-user-select:none}
+#link{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;overflow:visible}
+#link-p{fill:none;stroke:#82839f;stroke-width:2;stroke-dasharray:3 7;opacity:.7}
+#link-p.live{stroke:#1898ff;stroke-width:2.5;stroke-dasharray:10 8;opacity:.95;filter:drop-shadow(0 0 4px rgba(24,152,255,.7))}
+#link-c{fill:#82839f}
+#link-c.live{fill:#1898ff}
+
+.zlabel{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;cursor:pointer;display:flex;align-items:center;gap:8px;
+  font-family:var(--body-f);font-weight:600;font-size:13px;color:#fff;background:rgba(0,0,33,.9);
+  border:1px solid var(--line-2);padding:7px 13px 7px 10px;border-radius:999px;white-space:nowrap;backdrop-filter:blur(6px);transition:border-color .2s;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.zlabel:hover,.zlabel:focus-visible{border-color:var(--azure);outline:none}
+.zlabel i{width:9px;height:9px;border-radius:50%;background:var(--faint);flex:none}
+.zlabel em{font-weight:500}
+.zlabel.hw{background:rgba(6,30,70,.92);border-color:rgba(24,152,255,.65)}
+.zlabel.hw i{background:#fff;box-shadow:0 0 8px #1898ff}
+.zlabel.hw em{color:#9fd4ff;text-decoration:underline;text-underline-offset:2px}
+.zlabel[data-s="live"] i{background:var(--azure);box-shadow:0 0 8px var(--azure)}
+.zlabel[data-s="counts"] i{background:var(--peri)}
+.zlabel[data-s="handheld"] i,.zlabel[data-s="sku"] i{background:var(--amber)}
+.zlabel[data-s="blind"] i{background:var(--blind)}
+.zlabel em{font-style:normal;color:var(--muted);font-weight:400}
+.hh{position:absolute;transform:translate(-50%,-100%);pointer-events:auto;cursor:pointer;white-space:nowrap;font-family:var(--mono);font-size:12px;
+  padding:6px 11px;border-radius:7px;background:rgba(48,30,0,.9);color:#ffd28a;border:1px solid rgba(255,181,71,.6);appearance:none;line-height:1.4}
+.hh:hover,.hh:focus-visible{border-color:#fff;outline:none}
+.hh u{text-decoration:underline;text-underline-offset:2px;opacity:.8;margin-left:6px}
+.card-media{position:relative}
+.card-snd{position:absolute;right:8px;bottom:8px;appearance:none;cursor:pointer;font-family:var(--body-f);font-weight:500;font-size:11.5px;color:#fff;
+  background:rgba(0,0,33,.78);border:1px solid var(--line-2);border-radius:7px;padding:5px 9px}
+.card-snd:focus-visible{outline:2px solid var(--azure)}
+.card-src{font-size:11px;color:var(--faint);margin-top:8px}
+.hh[data-s="sync"]{background:rgba(0,24,60,.9);color:#9fd4ff;border-color:rgba(24,152,255,.6)}
+.hh b{font-weight:500;font-variant-numeric:tabular-nums}
+
+.card{position:absolute;top:14px;left:max(14px,env(safe-area-inset-left,0px));width:min(400px,calc(100% - 28px));max-height:calc(100% - 28px);overflow:auto;
+  background:rgba(0,0,33,.95);border:1px solid var(--line-2);border-radius:14px;backdrop-filter:blur(10px);box-shadow:0 20px 50px rgba(0,0,0,.45);z-index:4}
+.card-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;max-width:100%;background:#0d0f3a}
+.card-body{padding:15px 18px 17px}
+.card-k{font-size:13px;font-weight:600;color:var(--peri);margin:0 30px 6px 0}
+.card h3{margin:0 0 8px;font-family:var(--head);font-weight:500;font-size:18px;line-height:1.3;letter-spacing:-.01em;text-wrap:balance}
+.card p{margin:0;font-size:14.5px;line-height:1.55;color:var(--body)}
+.card-inst{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:13px;color:var(--body);display:flex;gap:8px;align-items:baseline}
+.tnav{display:flex;align-items:center;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.tbtn{appearance:none;cursor:pointer;font-family:var(--body-f);font-weight:600;font-size:13.5px;color:#fff;background:rgba(255,255,255,.06);
+  border:1px solid var(--line-2);border-radius:9px;padding:9px 13px;min-height:42px}
+.tbtn{white-space:nowrap}
+.tbtn:hover{border-color:var(--azure)}
+.tbtn:focus-visible{outline:2px solid var(--azure);outline-offset:2px}
+.tbtn:disabled{opacity:.35;cursor:default}
+.tbtn.next{margin-left:auto;background:var(--grad);border-color:transparent}
+.tbtn[aria-pressed="true"]{border-color:var(--azure);color:#9fd4ff}
+.tdots{display:flex;gap:5px;align-items:center}
+.tdots i{width:7px;height:7px;border-radius:50%;background:var(--line-2)}
+.tdots i.on{background:var(--azure);width:18px;border-radius:4px}
+.thint{font-size:12px;color:var(--faint);margin-top:9px}
+.card-inst span{color:var(--muted);flex:none}
+.card-x{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:8px;border:1px solid var(--line-2);background:rgba(0,0,33,.75);color:#fff;cursor:pointer;font-size:17px;line-height:1}
+.card-x:focus-visible{outline:2px solid var(--azure)}
+.card-bar{height:3px;background:var(--line);margin-top:12px;border-radius:3px;overflow:hidden}
+.card-bar i{display:block;height:100%;width:0;background:var(--grad)}
+
+.lower{position:absolute;left:max(14px,env(safe-area-inset-left,0px));bottom:14px;display:flex;flex-direction:column;gap:8px;pointer-events:none;max-width:min(640px,calc(100% - 400px))}
+.now{background:rgba(0,0,33,.9);border:1px solid var(--line-2);border-radius:12px;padding:11px 14px;font-size:14px;line-height:1.5;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.now b{display:block;font-size:12px;font-weight:600;color:var(--peri);margin-bottom:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--body);background:rgba(0,0,33,.8);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.legend span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.hud{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:12.5px;color:var(--body);background:rgba(0,0,33,.85);border:1px solid var(--line);padding:7px 11px;border-radius:9px;font-weight:500}
+.chip b{color:#fff;font-weight:500;font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;margin-left:5px}
+.chip.warn b{color:var(--amber)}
+.rightcol{position:absolute;top:14px;right:max(14px,env(safe-area-inset-right,0px));width:300px;display:flex;flex-direction:column;gap:10px;z-index:3;max-height:calc(100% - 86px);overflow:auto;scrollbar-width:thin}
+.sor{background:rgba(0,0,33,.92);border:1px solid var(--line-2);border-radius:14px;padding:14px 16px;box-shadow:0 20px 50px rgba(0,0,0,.4);transition:border-color .4s;z-index:3}
+.sor.live{border-color:rgba(24,152,255,.7)}
+.sor-h{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--muted)}
+.sor-s{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--muted)}
+.sor.live .sor-s{color:#9fd4ff}
+.sor-big{margin:8px 0 2px}
+.sor-big b{display:block;font-family:var(--head);font-weight:600;font-size:28px;letter-spacing:-.02em;line-height:1.1;color:var(--amber)}
+.sor.live .sor-big b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sor-big span{display:block;font-size:13px;color:var(--body);margin-top:3px}
+.sor-n{display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;font-size:13px;color:var(--muted)}
+.sor-n b{font-family:var(--mono);font-size:20px;font-weight:500;color:#fff;font-variant-numeric:tabular-nums}
+.sor:not(.live) .sor-n b{color:var(--amber)}
+.sor-w{margin:3px 0 0;font-size:12.5px;color:var(--amber);min-height:1.2em}
+.sor.live .sor-w{color:#9fd4ff}
+.sor-rows{list-style:none;margin:10px 0 0;padding:10px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:7px}
+.sor-rows li{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13.5px;font-weight:500}
+.pill{font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.pill.blind,.pill.offline{color:var(--blind);background:rgba(255,122,133,.12)}
+.zlabel[data-s="offline"] i{background:var(--blind);box-shadow:0 0 8px var(--blind)}
+.brk{background:rgba(0,0,33,.92);border:1px solid var(--line-2);border-radius:14px;padding:12px 14px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.brk-h{font-size:13px;font-weight:600;color:#fff;margin:0 0 2px}
+.brk-s{font-size:12px;color:var(--muted);margin:0 0 10px}
+.brk-b{display:flex;flex-direction:column;gap:6px}
+.sw{appearance:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;font-family:var(--body-f);font-size:13.5px;font-weight:500;color:#fff;
+  background:rgba(255,255,255,.05);border:1px solid var(--line-2);border-radius:10px;padding:9px 12px;min-height:42px;text-align:left}
+.sw:hover{border-color:var(--azure)}
+.sw:focus-visible{outline:2px solid var(--azure);outline-offset:2px}
+.sw b{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;color:#7cc4ff;background:rgba(24,152,255,.16);border:1px solid currentColor}
+.sw[aria-pressed="true"]{border-color:rgba(255,122,133,.7);background:rgba(255,122,133,.08)}
+.sw[aria-pressed="true"] b{color:var(--blind);background:rgba(255,122,133,.12)}
+.brk-note{font-size:12.5px;color:var(--body);margin:10px 0 0}
+.now.alert{border-color:rgba(255,122,133,.7)}
+.now.alert b{color:var(--blind)}
+.pill.handheld,.pill.sku{color:var(--amber);background:rgba(255,181,71,.12)}
+.pill.counts{color:#a99bff;background:rgba(120,77,255,.16)}
+.pill.live{color:#7cc4ff;background:rgba(24,152,255,.16)}
+.ctrls{position:absolute;right:max(14px,env(safe-area-inset-right,0px));bottom:14px;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:380px}
+.cbtn{appearance:none;cursor:pointer;font-family:var(--body-f);font-weight:600;font-size:13.5px;color:#fff;background:rgba(0,0,33,.88);
+  border:1px solid var(--line-2);border-radius:10px;padding:10px 14px;min-height:44px}
+.cbtn.primary{background:var(--grad);border-color:transparent}
+.cbtn:hover{border-color:var(--azure)}
+.cbtn:focus-visible{outline:2px solid var(--azure);outline-offset:2px}
+.cbtn[aria-pressed="true"]{background:var(--grad);border-color:transparent}
+.nogl{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;color:var(--body)}
+
+.rail{background:var(--ink-2);border-left:1px solid var(--line);overflow-y:auto;min-width:0;padding-block:0 26px;
+  padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.stages{position:sticky;top:0;z-index:5;background:var(--ink-2);display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding-block:14px 12px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.sbtn{appearance:none;cursor:pointer;text-align:left;background:var(--ink-3);border:1px solid var(--line);border-radius:10px;padding:9px 10px;color:var(--muted);font-family:var(--body-f);transition:.2s}
+.sbtn:hover{border-color:var(--line-2);color:#fff}
+.sbtn:focus-visible{outline:2px solid var(--azure);outline-offset:2px}
+.sbtn u{display:block;text-decoration:none;font-size:11px;font-weight:500}
+.sbtn b{display:block;font-family:var(--head);font-weight:500;font-size:13px;margin-top:2px;color:inherit}
+.sbtn[aria-pressed="true"]{background:var(--grad);border-color:transparent;color:#fff}
+
+.eyebrow{font-size:13px;font-weight:500;color:var(--peri);margin:0 0 8px}
+h1{font-family:var(--head);font-weight:500;font-size:24px;line-height:1.18;margin:0 0 12px;text-wrap:balance;letter-spacing:-.02em}
+h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{margin:0 0 16px;color:var(--body);font-size:14.5px}
+.lede b{color:#fff;font-weight:600}
+.installed{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.installed li{font-size:12px;color:#dfe6ff;background:rgba(31,105,255,.14);border:1px solid rgba(24,152,255,.34);border-radius:999px;padding:4px 10px}
+h2{font-size:12px;font-weight:500;color:var(--muted);margin:24px 0 10px}
+.blockers{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.blockers li{display:grid;grid-template-columns:24px 1fr;gap:10px;font-size:13.5px;color:var(--body)}
+.blockers i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--peri);padding-top:2px}
+.blockers strong{color:#fff;font-weight:600;display:block}
+.delivers{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0;padding:0;list-style:none}
+.delivers li{background:var(--ink-3);border:1px solid var(--line);border-radius:10px;padding:10px 11px;font-size:12px;color:var(--muted);min-width:0}
+.delivers b{display:block;color:#fff;font-size:12.5px;font-weight:600;margin-bottom:2px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.stat{background:var(--ink-3);border:1px solid var(--line);border-radius:10px;padding:11px 10px;min-width:0}
+.stat b{display:block;font-family:var(--head);font-weight:500;font-size:18px;letter-spacing:-.03em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.stat span{display:block;font-size:11px;line-height:1.3;color:var(--muted);margin-top:4px}
+
+.gate{margin-top:24px;border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:var(--ink-3);transition:box-shadow .4s}
+.gate.hot{box-shadow:0 0 0 2px var(--azure),0 0 36px rgba(24,152,255,.35)}
+.gate-top{padding:15px;background:linear-gradient(135deg,rgba(120,77,255,.28),rgba(24,152,255,.16))}
+.gate-k{font-size:12px;font-weight:500;color:#cfd2ff;margin:0 0 4px}
+.gate-h{font-family:var(--head);font-weight:500;font-size:15px;line-height:1.3;margin:0 0 6px}
+.gate-top p{margin:0 0 12px;font-size:13px;color:var(--body)}
+.cta{appearance:none;cursor:pointer;width:100%;border:0;border-radius:10px;background:var(--grad);color:#fff;font-family:var(--body-f);font-weight:600;font-size:14px;padding:12px 14px;min-height:44px}
+.cta:hover{filter:brightness(1.1)}
+.cta:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.cta2{appearance:none;cursor:pointer;width:100%;margin-top:7px;border:1px solid var(--line-2);border-radius:10px;background:transparent;color:#fff;font-family:var(--body-f);font-weight:500;font-size:13px;padding:10px 14px;min-height:42px}
+.cta2:hover{border-color:var(--azure)}
+.cta2:focus-visible{outline:2px solid var(--azure);outline-offset:2px}
+.gate-body{padding:14px 15px;border-top:1px solid var(--line)}
+.field{display:flex;gap:7px;margin-top:10px}
+.field input{flex:1;min-width:0;background:var(--pblack);border:1px solid var(--line-2);border-radius:9px;color:#fff;font-family:var(--body-f);font-size:14px;padding:10px 12px}
+.field input:focus{outline:2px solid var(--azure);outline-offset:-1px}
+.field button{flex:none;border:0;border-radius:9px;background:#fff;color:var(--pblack);font-family:var(--body-f);font-weight:600;font-size:13.5px;padding:10px 15px;cursor:pointer}
+.field button:focus-visible{outline:2px solid var(--azure);outline-offset:2px}
+.capture{margin:0;padding:0;list-style:none;font-size:12px;color:var(--muted)}
+.capture li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)}
+.capture li:last-child{border-bottom:0}
+.capture b{color:#9fd4ff;font-weight:500;font-family:var(--mono);font-size:11.5px;text-align:right;font-variant-numeric:tabular-nums}
+
+.log{margin-top:22px;border:1px solid var(--line);border-radius:10px;background:#00001a;overflow:hidden}
+.log-h{display:flex;justify-content:space-between;gap:10px;padding:8px 11px;border-bottom:1px solid var(--line);font-size:11.5px;font-weight:500;color:var(--muted)}
+.log-rows{height:98px;overflow:hidden;padding:7px 11px;display:flex;flex-direction:column;gap:3px}
+.log-rows div{font-family:var(--mono);font-size:10.5px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.log-rows div:first-child{color:#9fd4ff}
+.src{margin-top:20px;font-size:11px;line-height:1.5;color:var(--faint)}
+
+/* ---- header stage switcher + actions ---- */
+.seg{display:flex;gap:4px;background:var(--ink-3);border:1px solid var(--line);border-radius:12px;padding:3px;margin-left:8px}
+.seg .sbtn{padding:6px 13px;border-radius:9px;border:0;background:transparent;display:flex;align-items:baseline;gap:7px}
+.seg .sbtn u{display:inline;font-size:11px;opacity:.75}
+.seg .sbtn b{margin:0;font-size:13px}
+.seg .sbtn[aria-pressed="true"]{background:var(--grad);color:#fff}
+.seg .sbtn:hover{color:#fff}
+.bar-act{margin-left:auto;display:flex;gap:8px;align-items:center}
+.bbtn{appearance:none;cursor:pointer;font-family:var(--body-f);font-weight:600;font-size:13px;color:#fff;background:transparent;border:1px solid var(--line-2);border-radius:9px;padding:7px 12px;min-height:36px;white-space:nowrap}
+.bbtn:hover{border-color:var(--azure)}
+.bbtn:focus-visible{outline:2px solid var(--azure);outline-offset:2px}
+.bbtn.primary{background:var(--grad);border-color:transparent}
+#btn-rail{display:none}
+.rail-top{display:none}
+
+/* ---- drawer mode: below 1500px the narrative rail slides over instead of taking width ---- */
+@media (max-width:1499px){
+  .layout{grid-template-columns:1fr}
+  .rail{position:fixed;top:var(--barh,57px);right:0;bottom:0;width:min(420px,94vw);z-index:30;transform:translateX(103%);transition:transform .28s ease;box-shadow:-24px 0 60px rgba(0,0,0,.5)}
+  .shell.rail-open .rail{transform:none}
+  #btn-rail{display:inline-block}
+  .rail-top{display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5;background:var(--ink-2);padding-block:14px 12px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  .rail-top b{font-size:13px;color:var(--muted);font-weight:600}
+  .bar-tag{display:none}
+}
+@media (max-width:1100px){ .bar-name span{display:none} }
+@media (max-width:820px){ .bar-name,.bar-sep{display:none} .seg .sbtn u{display:none} .bar{gap:10px} }
+@media (max-width:520px){ .bbtn.primary{display:none} .seg{margin-left:0} .logo{height:18px} h1{font-size:21px} }
+
+/* ---- stage density, set from the stage's own size (see fitStage in script) ---- */
+.brk-h{appearance:none;background:none;border:0;padding:0;color:#fff;font-family:var(--body-f);cursor:default;display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left}
+.brk-car{display:none;font-size:12px;color:var(--muted)}
+.stage.compact .card{width:min(340px,46%)}
+.stage.compact .card-img{aspect-ratio:16/7}
+.stage.compact .card-body{padding:12px 14px 13px}
+.stage.compact .card h3{font-size:16px}
+.stage.compact .card p{font-size:13.5px}
+.stage.compact .tbtn{font-size:12.5px;padding:7px 10px;min-height:38px}
+.stage.compact .thint{display:none}
+.stage.compact .rightcol{width:min(250px,34%);max-height:calc(100% - 80px)}
+.stage.compact .sor{padding:11px 13px}
+.stage.compact .sor-big b{font-size:21px}
+.stage.compact .sor-big span{font-size:12px}
+.stage.compact .sor-rows,.stage.compact .legend,.stage.compact .brk-s{display:none}
+.stage.compact .brk-h{cursor:pointer}
+.stage.compact .brk-car{display:inline}
+.stage.compact .brk .brk-b,.stage.compact .brk .brk-note{display:none}
+.stage.compact .brk.open .brk-b{display:flex;margin-top:9px}
+.stage.compact .brk.open .brk-note:not([hidden]){display:block}
+.stage.compact .brk-h + .brk-s{margin:0}
+.stage.compact .lower{max-width:min(460px,54%)}
+.stage.compact .now{font-size:13px;padding:9px 12px}
+.stage.compact .chip{font-size:11.5px;padding:5px 9px}
+.stage.compact .chip b{font-size:12px}
+.stage.compact .cbtn{font-size:12.5px;padding:8px 11px;min-height:38px}
+.stage.compact .zlabel{font-size:12px;padding:6px 11px 6px 9px}
+.stage.tight .card{top:auto;bottom:62px;width:calc(100% - 28px);max-height:58%}
+.stage.tight .card-img{display:none}
+.stage.tight .lower{max-width:calc(100% - 28px);bottom:62px}
+.stage.tight .hud{display:none}
+.stage.tight .rightcol{width:min(230px,60%)}
+.stage.tight .sor-sub,.stage.tight .sor-w{display:none}
+.stage.tight #btn-fs{display:none}
+.stage.tight .ctrls{left:max(14px,env(safe-area-inset-left,0px));right:auto;max-width:none;justify-content:flex-start}
+.stage.tight .zlabel em{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="shell">
+  <header class="bar">
+    <img class="logo" src="img/levata-logo-wht.png" alt="Levata">
+    <span class="bar-sep" aria-hidden="true"></span>
+    <span class="bar-name">Stuck to Scaled<span>Retail RFID with Zebra</span></span>
+    <div class="seg" role="group" aria-label="Maturity stage">
+      <button class="sbtn" id="s0" aria-pressed="true"><u>Stage 1</u><b>Crawl</b></button>
+      <button class="sbtn" id="s1" aria-pressed="false"><u>Stage 2</u><b>Walk</b></button>
+      <button class="sbtn" id="s2" aria-pressed="false"><u>Stage 3</u><b>Run</b></button>
+    </div>
+    <div class="bar-act">
+      <span class="bar-tag">NRF 2027 concept build &middot; <b>Levata + Zebra</b></span>
+      <button class="bbtn" id="btn-rail" aria-expanded="false" aria-controls="rail">Stage details</button>
+      <button class="bbtn primary" id="btn-pb">Get the playbook</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <section class="stage" id="stage">
+      <div id="scene" role="img" aria-label="A footwear store in cutaway, from receiving dock to checkout. RFID hardware and data flows change with each maturity stage. Drag to orbit, scroll or pinch to zoom."></div>
+      <svg id="link" aria-hidden="true"><path id="link-p" d=""></path><circle id="link-c" r="0"></circle></svg>
+      <div id="labels"></div>
+      <button class="hh" id="hh" type="button" hidden></button>
+
+      <div class="card" id="card" hidden>
+        <div class="card-media">
+          <img class="card-img" id="card-img" alt="" hidden>
+          <video class="card-img" id="card-vid" muted loop playsinline preload="none" poster="vid/tc22r-poster.jpg" hidden></video>
+          <button class="card-snd" id="card-snd" type="button" hidden>Sound on</button>
+        </div>
+        <div class="card-body">
+          <p class="card-k" id="card-k"></p>
+          <h3 id="card-h"></h3>
+          <p id="card-p"></p>
+          <div class="card-inst" id="card-inst"><span>Installed</span><b id="card-i" style="font-weight:500"></b></div>
+          <p class="card-src" id="card-src" hidden>Video: Zebra Technologies</p>
+          <div class="tnav" id="tnav" hidden>
+            <button class="tbtn" id="t-prev" type="button">&lsaquo; Back</button>
+            <div class="tdots" id="t-dots" aria-hidden="true"></div>
+            <button class="tbtn" id="t-auto" type="button" aria-pressed="false">Autoplay</button>
+            <button class="tbtn next" id="t-next" type="button">Next &rsaquo;</button>
+          </div>
+          <div class="card-bar" id="card-bar" hidden><i id="card-prog"></i></div>
+          <p class="thint" id="thint" hidden>Drag to look around or scroll to zoom. The tour waits for you.</p>
+        </div>
+        <button class="card-x" id="card-x" aria-label="Close">&times;</button>
+      </div>
+
+      <div class="rightcol">
+      <div class="sor" id="sor" aria-live="off">
+        <div class="sor-h"><span id="sor-t">Inventory system of record</span><span class="sor-s" id="sor-s">Manual count</span></div>
+        <div class="sor-big"><b id="sor-big">Unverified</b><span id="sor-sub">Updates only at the next manual count</span></div>
+        <div class="sor-n"><span>Reads in system</span><b id="sor-n">0</b></div>
+        <p class="sor-w" id="sor-w"></p>
+        <ul class="sor-rows" id="sor-rows"></ul>
+      </div>
+      <div class="brk" id="brk">
+        <button class="brk-h" id="brk-h" type="button" aria-expanded="false">Switch a reader off <span class="brk-car" id="brk-car">Show &#9662;</span></button>
+        <p class="brk-s" id="brk-s">See what the system loses when one read point fails.</p>
+        <div class="brk-b" id="brk-b"></div>
+        <p class="brk-note" id="brk-note" hidden></p>
+      </div>
+      </div>
+
+      <div class="lower">
+        <div class="now" id="now"><b id="now-k">What you are seeing</b><span id="now-t"></span></div>
+        <div class="legend" aria-label="Legend">
+          <span><i style="background:var(--azure)"></i>Live</span>
+          <span><i style="background:var(--peri)"></i>Cycle counts</span>
+          <span><i style="background:var(--amber)"></i>Partial data</span>
+          <span><i style="background:var(--blind)"></i>Blind</span>
+          <span><i style="background:#8fd0ff;width:6px;height:6px"></i>Moving dot = one tag read</span>
+        </div>
+        <div class="hud" aria-live="off">
+          <span class="chip">Stage<b id="hud-stage">Crawl</b></span>
+          <span class="chip">Reads captured<b id="hud-cap">0</b></span>
+          <span class="chip warn" id="chip-sys">In system of record<b id="hud-sys">0</b></span>
+        </div>
+      </div>
+      <div class="ctrls">
+        <button class="cbtn primary" id="btn-tour" aria-pressed="false">Take the guided tour</button>
+        <button class="cbtn" id="btn-reset">Reset view</button>
+        <button class="cbtn" id="btn-fs" hidden>Full screen</button>
+      </div>
+      <div class="nogl" id="nogl" hidden>The 3D store needs WebGL, which this browser has turned off. Every stage is still in the panel.</div>
+    </section>
+
+    <aside class="rail" id="rail">
+      <div class="rail-top"><b id="rail-k">Stage details</b><button class="bbtn" id="rail-x" type="button">Close</button></div>
+      <div style="height:16px" class="rail-pad"></div>
+
+      <p class="eyebrow" id="c-eyebrow">Assess, next 90 days</p>
+      <h1 id="c-title">Unstick the pilot.</h1>
+      <p class="lede" id="c-lede"></p>
+      <ul class="installed" id="c-inst"></ul>
+
+      <h2 id="c-blockhead">Why programs stall here</h2>
+      <ul class="blockers" id="c-blockers"></ul>
+
+      <h2>What this stage delivers</h2>
+      <ul class="delivers" id="c-delivers"></ul>
+      <div class="stats" id="c-stats"></div>
+
+      <div class="gate"><div class="gate-top"><p class="gate-k">Interactive portfolio preview</p><p class="gate-h">Explore the crawl, walk, and run stages.</p><p>This public edition focuses on the interactive experience and stage-based story.</p></div></div>
+
+      <div class="log">
+        <div class="log-h"><span>Tag read stream</span><span id="log-src">Stockroom handheld</span></div>
+        <div class="log-rows" id="log-rows"></div>
+      </div>
+
+      <p class="src">Statistics are published campaign figures. Sources include Oxford Economics, Zebra, and Deloitte. Store counts and read events in the scene are a simulation that illustrates the workflow, not customer data.</p>
+    </aside>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+'use strict';
+var REDUCED = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+function $(id){ return document.getElementById(id); }
+function fmt(n){ return Math.round(n).toLocaleString('en-US'); }
+
+/* =============================== CONTENT =============================== */
+var CONTENT = [
+ { eyebrow:'Assess, next 90 days', title:'Unstick <em>the pilot.</em>',
+   lede:'You are not behind because of the technology. You are behind because <b>no one has defined the next 90 days.</b>',
+   installed:['One Zebra TC22R handheld in the stockroom'],
+   blockhead:'Why programs stall after a successful pilot',
+   blockers:[['01','Reads, not workflows','The pilot proved read accuracy but never touched who counts, how often, and what decision changes.'],
+             ['02','Fuzzy ownership','Pilots have project owners. Programs need operational owners. The handoff is where a year disappears.'],
+             ['03','An expired business case','The pilot case covered five stores and cycle counting. A chain case needs source tagging, integration and scale gains.']],
+   delivers:[['Stage assessment','Where the program sits'],['90-day roadmap','Next increment, dated'],['Named owner','One accountable lead'],['Integration path','Route to POS and inventory']],
+   stats:[['76%','Retailers say inventory accuracy needs work'],['50%','Shoppers have left over out-of-stocks'],['71%','Piloting or using AI for inventory']],
+   gateH:'Start with the Crawl chapter.', gateP:'Where your program sits, what is blocking it, and what the next 90 days should look like.',
+   meet:'Book a stage assessment', inside:'The full playbook, opened at the Crawl chapter, plus the stage assessment checklist.',
+   src:'Stockroom handheld' },
+ { eyebrow:'Integrate, 90 to 180 days', title:'Connect RFID <em>to operations.</em>',
+   lede:'A read nobody acts on is not data. It is a number trapped on a handheld until your systems <b>capture it, trust it, and act on it.</b>',
+   installed:['Fixed portal at the dock door','EPC capture at POS','Cycle counts on the sales floor','Live feed to the system of record'],
+   blockhead:'What moves reads into trusted data',
+   blockers:[['01','EPC at POS','Capture each tag’s unique EPC at the transaction, so the system of record updates live, not at the next count.'],
+             ['02','Inventory system of record','Feed a continuous, unit-level count into the system merchandising and replenishment already use.'],
+             ['03','The T-log','Stream read events from receiving to floor to checkout, so loss prevention sees movement, not just totals.']],
+   delivers:[['Integration map','POS, inventory, event stream'],['Source-tagging plan','Supplier and EPC encoding'],['Acceptance tests','The bar for a store being live'],['Walk roadmap','Sequenced across 90 to 180 days']],
+   stats:[['+63%','Checkout speed and accuracy'],['-46%','Customer wait times'],['-31%','Time on inventory counts']],
+   gateH:'Jump to the Walk chapter.', gateP:'The integration map, source-tagging plan and acceptance tests that earn a rollout.',
+   meet:'Book an integration session', inside:'The full playbook, opened at the Walk chapter, plus the store acceptance test template.',
+   src:'POS and portal, EPC capture' },
+ { eyebrow:'Scale, chain-wide', title:'Prove <em>the scale case.</em>',
+   lede:'Scale is not a bigger pilot. It is a rollout sequenced by evidence, funded by a real business case, and measured by <b>hours your teams reinvest in customers.</b>',
+   installed:['Overhead fixed readers','Continuous floor and stockroom counts','Chain rollout in waves'],
+   blockhead:'What running at chain scale takes',
+   blockers:[['01','A business case that scales','Chain-level economics with source tagging and integration amortized, not the five-store case that expired.'],
+             ['02','Rollout by evidence','Expand in waves as acceptance tests pass, so each store earns the next instead of following a calendar.'],
+             ['03','Reinvested hours','Hours recovered from manual counts move to service, selling and fulfillment.']],
+   delivers:[['Chain business case','Economics at network scale'],['Wave rollout plan','Evidence-led, store by store'],['Reinvestment model','Where recovered hours go'],['Scale metrics','Accuracy, exceptions, service']],
+   stats:[['$53.8M','Potential annual revenue gain at scale'],['-57%','Shrink, waste and loss'],['98%','Inventory visibility at scale']],
+   gateH:'Go straight to the Run chapter.', gateP:'The chain business case, wave rollout plan and reinvestment model.',
+   meet:'Talk through your scale case', inside:'The full playbook, opened at the Run chapter, plus the reinvestment model worksheet.',
+   src:'Chain event stream' }
+];
+var NAMES = ['Crawl','Walk','Run'];
+var ZK = ['recv','stock','floor','check','sys'];
+var ZNAME = {recv:'Receiving', stock:'Stockroom', floor:'Sales floor', check:'Checkout', sys:'System of record'};
+var ZIMG = {recv:'img/recv.jpg', stock:'img/stock.jpg', floor:'img/floor.jpg', check:'img/check.jpg', sys:null};
+var ZCOPY = {
+ recv:[['Cartons arrive unread.','Receiving is checked by hand, if at all. Nothing is captured until stock reaches the back room.'],
+       ['A portal reads every carton at the door.','Fixed antennas read tagged cartons as the pallet passes, so receiving is verified before it is broken down.'],
+       ['Source-tagged and read at every door.','Suppliers encode the tags. Every store receives the same way, so the chain reconciles automatically.']],
+ stock:[['The pilot lives here.','A handheld proves the reads. The counts stay on the device until someone uploads them. Watch the counter above the associate.'],
+       ['Cycle counts feed the system.','The same handheld now syncs. Every read lands in the inventory system of record.'],
+       ['Counts run themselves.','Overhead readers keep the stockroom current. Hours recovered from counting move to fulfillment.']],
+ floor:[['Counted by hand, weekly at best.','The system number and the shelf number drift apart between counts. Out-of-stocks hide in that gap.'],
+       ['Unit-level counts replace the snapshot.','Associates cycle count the floor with a handheld, so replenishment sees what is actually on display.'],
+       ['A continuous count.','Overhead readers watch the floor. Associates spend the recovered time with customers.']],
+ check:[['Sales come off by SKU.','A barcode scan records a style and size, not which unit sold. The count never fully reconciles.'],
+       ['EPC captured at POS.','The register reads the unique tag on each item, so the system of record updates the moment it sells.'],
+       ['The T-log streams.','Read events flow from the dock to the register, so loss prevention sees movement, not just totals.']],
+ sys:[['Waiting for the next count.','The system of record only changes when someone uploads a manual count.'],
+       ['Every read lands here.','A read nobody acts on is not data. Now each one updates the unit-level count as it happens.'],
+       ['One trusted count across the chain.','The basis for a business case the CFO trusts, and for rolling out store by store as each one proves itself.']]
+};
+var ZINST = {
+ recv:['Nothing reads here yet','Fixed portal, four antennas','Portal plus source-tagged inbound'],
+ stock:['One TC22R handheld, not synced','TC22R handheld, synced','Overhead readers plus TC22R'],
+ floor:['Manual counts','Handheld cycle counts','Overhead fixed readers'],
+ check:['Barcode scanner, SKU only','EPC capture at the register','EPC capture streamed to the T-log'],
+ sys:['Manual count uploads','Unit-level event feed','Chain-wide event feed']
+};
+var ZSTAT = [
+ {recv:'blind',stock:'handheld',floor:'blind',check:'sku',sys:'blind'},
+ {recv:'live',stock:'live',floor:'counts',check:'live',sys:'live'},
+ {recv:'live',stock:'live',floor:'live',check:'live',sys:'live'}
+];
+var SLABEL = {blind:'Blind',handheld:'Handheld only',sku:'SKU only',counts:'Cycle counts',live:'Live'};
+var TOUR = [
+ {s:0,f:'stage',k:'Crawl',h:'Your pilot proved the reads.',p:'One Zebra TC22R, one stockroom. Every count it captures stays on the device.',d:9,vid:true},
+ {s:0,f:'stock',k:'Crawl, stockroom',h:'A number trapped on a handheld.',p:'Watch the counter above the associate climb while the system of record stays at zero.',d:8},
+ {s:1,f:'recv',k:'Walk, receiving',h:'A portal reads every carton at the dock door.',p:'Receiving is verified before the pallet is broken down.',d:7},
+ {s:1,f:'check',k:'Walk, checkout',h:'EPC captured at POS.',p:'The system of record updates the moment an item sells.',d:7},
+ {s:1,f:'sys',k:'Walk, system of record',h:'Now every read lands here.',p:'The handheld synced. Unit-level counts flow from the dock to the register.',d:7},
+ {s:2,f:'floor',k:'Run, sales floor',h:'Counts run themselves.',p:'Overhead readers keep the floor and stockroom current. Recovered hours go to customers.',d:8},
+ {s:2,f:'chain',k:'Run, chain-wide',h:'Rollout by evidence.',p:'Each store earns the next as its acceptance tests pass.',d:8},
+ {s:2,f:'chain',k:'Your next step',h:'See where your program sits.',p:'Get the Levata + Zebra RFID Retail Playbook, opened at your stage.',d:9,cta:true}
+];
+
+/* =============================== STATE =============================== */
+var stage=0, maxStage=0, dwell=[0,0,0], zonesOpened={}, openZone=null, sawTour=false, askedFor=null;
+var captured=0, inSys=0, unsynced=0, inSysShown=0;
+var tourOn=false, tourIdx=-1, tourT=0, idleT=0;
+var W3=null;
+
+/* =============================== RAIL =============================== */
+function renderRail(){
+  var c=CONTENT[stage];
+  $('c-eyebrow').textContent=c.eyebrow; $('c-title').innerHTML=c.title; $('c-lede').innerHTML=c.lede;
+  $('c-inst').innerHTML=c.installed.map(function(t){return '<li>'+t+'</li>';}).join('');
+  $('c-blockhead').textContent=c.blockhead;
+  $('c-blockers').innerHTML=c.blockers.map(function(b){return '<li><i>'+b[0]+'</i><span><strong>'+b[1]+'</strong>'+b[2]+'</span></li>';}).join('');
+  $('c-delivers').innerHTML=c.delivers.map(function(d){return '<li><b>'+d[0]+'</b>'+d[1]+'</li>';}).join('');
+  $('c-stats').innerHTML=c.stats.map(function(s){return '<div class="stat"><b>'+s[0]+'</b><span>'+s[1]+'</span></div>';}).join('');
+  $('hud-stage').textContent=NAMES[stage]; $('log-src').textContent=c.src;
+  for(var i=0;i<3;i++) $('s'+i).setAttribute('aria-pressed', i===stage?'true':'false');
+  $('chip-sys').className = 'chip'+(stage===0?' warn':'');
+  $('now-k').textContent = 'What you are seeing, '+NAMES[stage];
+  $('now-t').textContent = NOW[stage];
+  renderSOR(); renderBreak();
+}
+var NOW=[
+ 'The associate’s TC22R reads tags in the stockroom, but every read stays on the device. The system of record on the right never moves.',
+ 'Reads now happen at the dock door, on the sales floor and at the register. Each moving dot is a read landing in the system of record.',
+ 'Overhead readers count the floor and stockroom continuously, and every store in the chain reports into one system of record.'
+];
+var SOR=[
+ {t:'Inventory system of record',s:'Manual count',big:'Unverified',sub:'Updates only at the next manual count'},
+ {t:'Inventory system of record',s:'Streaming',big:'Live',sub:'Unit-level feed, dock to register'},
+ {t:'Chain system of record',s:'Streaming',big:'98% visible',sub:'Inventory visibility at scale'}
+];
+var storesLive=1;
+/* ---- break the store: switch read points off and watch the system of record go stale ---- */
+var OFF={portal:false,pos:false,floor:false,ovh:false}, MISSED={portal:0,pos:0,floor:0,ovh:0}, triedBreak=false;
+var BRK=[
+ {k:'portal',label:'Dock door portal',min:1,zone:'recv'},
+ {k:'pos',label:'Register EPC capture',min:1,zone:'check'},
+ {k:'floor',label:'Floor handheld counts',min:1,max:1,zone:'floor'},
+ {k:'ovh',label:'Overhead readers',min:2,zone:'floor'}
+];
+function zst(k){
+  if(stage>=1){
+    if(k==='recv' && OFF.portal) return 'offline';
+    if(k==='check' && OFF.pos) return 'offline';
+    if(k==='floor' && ((stage===1 && OFF.floor) || (stage===2 && OFF.ovh))) return 'offline';
+  }
+  return ZSTAT[stage][k];
+}
+SLABEL.offline='Offline';
+function anyOff(){ return OFF.portal||OFF.pos||(stage===1&&OFF.floor)||(stage===2&&OFF.ovh); }
+function resetBreak(){ OFF={portal:false,pos:false,floor:false,ovh:false}; MISSED={portal:0,pos:0,floor:0,ovh:0}; }
+function renderBreak(){
+  var b=$('brk-b');
+  $('brk').hidden = stage===0;
+  if(stage===0){ b.innerHTML=''; $('brk-s').textContent='Nothing to switch off yet. In Crawl the system is already blind everywhere except one handheld.'; $('brk-note').hidden=true; return; }
+  $('brk-s').textContent='See what the system loses when one read point fails.';
+  b.innerHTML=BRK.filter(function(x){ return stage>=x.min && (!x.max || stage<=x.max); }).map(function(x){
+    return '<button class="sw" type="button" data-k="'+x.k+'" aria-pressed="'+(OFF[x.k]?'true':'false')+'"><span>'+x.label+'</span><b>'+(OFF[x.k]?'Off':'On')+'</b></button>'; }).join('');
+}
+$('brk-b').addEventListener('click', function(e){
+  var btn=e.target.closest && e.target.closest('.sw'); if(!btn) return;
+  if(tourOn) stopTour();
+  var k=btn.getAttribute('data-k'); OFF[k]=!OFF[k]; triedBreak=true;
+  if(!OFF[k]) MISSED[k]=0;
+  renderBreak(); renderSOR(); if(W3) W3.refresh();
+});
+function breakNote(){
+  var parts=[];
+  function pl(n,w){ return n+' '+w+(n===1?'':'s'); }
+  if(stage>=1 && OFF.portal) parts.push(MISSED.portal ? pl(MISSED.portal,'carton')+' received but never recorded' : 'Cartons arriving at the dock are no longer recorded');
+  if(stage>=1 && OFF.pos) parts.push(MISSED.pos ? pl(MISSED.pos,'item')+' sold but still counted as on the shelf' : 'Sales at the register no longer update the count');
+  if(stage===1 && OFF.floor) parts.push('floor counts stopped '+MISSED.floor+'s ago, so the shelf count is going stale');
+  if(stage===2 && OFF.ovh) parts.push(MISSED.ovh ? pl(MISSED.ovh,'item movement')+' on the floor went unseen' : 'Movement on the sales floor is no longer seen');
+  return parts;
+}
+function renderSOR(){
+  var c=SOR[stage], el=$('sor');
+  el.classList.toggle('live', stage>0);
+  $('sor-t').textContent=c.t; $('sor-s').textContent=c.s; $('sor-big').textContent=c.big; $('sor-sub').textContent=c.sub;
+  $('sor-rows').innerHTML=['recv','stock','floor','check'].map(function(k){ var st=zst(k); return '<li><span>'+ZNAME[k]+'</span><span class="pill '+st+'">'+SLABEL[st]+'</span></li>'; }).join('');
+}
+function tickSOR(){
+  $('sor-n').textContent=fmt(inSysShown);
+  var parts=breakNote();
+  if(parts.length){
+    $('sor-w').textContent=parts.length+' read point'+(parts.length>1?'s':'')+' offline, the count is drifting';
+    $('now').classList.add('alert'); $('now-k').textContent='What happens when a reader fails';
+    $('now-t').textContent=parts.join('. ')+'. Switch it back on to reconcile.';
+    $('brk-note').hidden=false; $('brk-note').textContent='The monitor and this panel now show that zone as Offline.';
+    return;
+  } else if($('now').classList.contains('alert')){ $('now').classList.remove('alert'); $('now-k').textContent='What you are seeing, '+NAMES[stage]; $('now-t').textContent=NOW[stage]; $('brk-note').hidden=true; }
+  $('sor-w').textContent = stage===0 ? (unsynced>0 ? fmt(unsynced)+' reads stuck on the handheld' : 'Waiting on the next manual count')
+                         : stage===2 ? 'Stores reporting: '+storesLive+' of 10' : 'Handheld synced, nothing waiting';
+}
+function setStage(i, fromTour){
+  var prev=stage; stage=i; maxStage=Math.max(maxStage,i);
+  /* each stage tells its own story: going back resets the counters so Crawl never shows reads in the system */
+  if(i===0 || i<prev){ captured=0; inSys=0; inSysShown=0; unsynced=0; }
+  if(i!==prev) resetBreak();
+  if(prev===0 && i>0 && unsynced>0 && W3){ W3.syncBurst(unsynced); }
+  if(i>0 && unsynced>0){ inSys+=unsynced; unsynced=0; }
+  renderRail();
+  if(W3) W3.onStage(i, fromTour);
+  if(!fromTour && openZone) showZone(openZone);
+}
+
+/* =============================== CARD =============================== */
+var VID={src:'',poster:'vid/tc22r-poster.jpg',t:0};
+var FXV={src:'',poster:'vid/fx-rfid-poster.jpg'};
+/* Zebra RFID portfolio video, started at the moment that matches each zone (playback start only, file unedited) */
+var ZVID={recv:[null,{src:FXV.src,poster:FXV.poster,t:13}, {src:FXV.src,poster:FXV.poster,t:13}],
+          floor:[null,null,{src:FXV.src,poster:FXV.poster,t:19.5}]};
+function setCardImg(src){ setCardMedia(src,null); }
+function setCardMedia(src,vid){
+  var im=$('card-img'), v=$('card-vid'), snd=$('card-snd');
+  if(vid===true) vid=VID;
+  $('card-src').hidden=!vid;
+  if(vid){
+    im.hidden=true; v.hidden=false; snd.hidden=false;
+    var seek=function(){ try{ v.currentTime=vid.t||0; }catch(e){} };
+    if(v.getAttribute('src')!==vid.src){ v.setAttribute('poster',vid.poster); v.setAttribute('src',vid.src); v.addEventListener('loadedmetadata',seek,{once:true}); v.load(); }
+    else seek();
+    if(!REDUCED){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); } else v.setAttribute('controls','');
+    return;
+  }
+  try{ v.pause(); }catch(e){}
+  v.hidden=true; snd.hidden=true; v.muted=true; snd.textContent='Sound on';
+  if(src){ im.src=src; im.hidden=false; im.onerror=function(){ im.hidden=true; }; } else { im.hidden=true; im.removeAttribute('src'); }
+}
+$('card-snd').addEventListener('click', function(){
+  var v=$('card-vid'); v.muted=!v.muted; this.textContent=v.muted?'Sound on':'Sound off';
+  if(!v.muted){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
+});
+var HW={
+ portal:{label:'Dock door portal',k:'Receiving, the hardware',h:'Dock door RFID portal',
+   p:'Antennas on each side of the dock door, cabled to a fixed reader on the wall. Every tagged carton is read as the pallet rolls through, so receiving is verified before anything is put away.',
+   i:'Fixed reader plus four antennas',v:{src:'vid/fx-rfid.mp4',poster:'vid/fx-rfid-poster.jpg',t:13}},
+ ovh:{label:'Overhead readers',k:'Sales floor, the hardware',h:'Overhead fixed RFID readers',
+   p:'Ceiling-mounted readers count every tagged item in their zone all day, without anyone walking the aisles. This is what turns periodic cycle counts into a continuous count.',
+   i:'Eleven readers covering floor, stockroom and checkout',v:{src:'vid/fx-rfid.mp4',poster:'vid/fx-rfid-poster.jpg',t:19.5}}
+};
+function showHW(k){
+  var h=HW[k]; openZone=null; zonesOpened[h.label]=true;
+  $('card-k').textContent=h.k; $('card-h').textContent=h.h; $('card-p').textContent=h.p; $('card-i').textContent=h.i;
+  $('card-inst').hidden=false; $('tnav').hidden=true; $('thint').hidden=true; $('card-bar').hidden=true;
+  setCardMedia(null,h.v); $('card').hidden=false; $('now').hidden=true;
+}
+function showDevice(){
+  openZone=null; zonesOpened['TC22R device']=true;
+  $('card-k').textContent='Stockroom, the device';
+  $('card-h').textContent='Zebra TC22R integrated handheld RFID reader';
+  $('card-p').textContent='RFID built into the handheld, so there is no sled to attach. Android, with MDM support and over-the-air management. In a stalled pilot the device works. The workflow around it is what is missing.';
+  $('card-i').textContent=stage===0?'Reads stay on the device until someone uploads them':'Synced, every read lands in the system of record';
+  $('card-inst').hidden=false; $('card-bar').hidden=true;
+  setCardMedia(null,true);
+  $('tnav').hidden=true; $('thint').hidden=true; $('card-bar').hidden=true;
+  $('card').hidden=false; $('now').hidden=true;
+}
+$('hh').addEventListener('click', function(){ if(tourOn) stopTour(); showDevice(); });
+function showZone(k){
+  openZone=k; zonesOpened[ZNAME[k]]=true;
+  var t=ZCOPY[k][stage];
+  $('card-k').textContent=ZNAME[k]+', '+NAMES[stage];
+  $('card-h').textContent=t[0]; $('card-p').textContent=t[1];
+  $('card-i').textContent=ZINST[k][stage]; $('card-inst').hidden=false;
+  $('card-bar').hidden=true;
+  var zv=ZVID[k]&&ZVID[k][stage];
+  if(zv) setCardMedia(null,zv); else setCardImg(ZIMG[k]);
+  $('tnav').hidden=true; $('thint').hidden=true; $('card-bar').hidden=true;
+  $('card').hidden=false; $('now').hidden=true;
+}
+function showTourCard(step, n){
+  $('card-k').textContent='Guided tour, step '+(n+1)+' of '+TOUR.length+', '+step.k;
+  $('card-h').textContent=step.h; $('card-p').textContent=step.p;
+  $('card-inst').hidden=true;
+  $('tnav').hidden=false; $('thint').hidden=false; $('card-bar').hidden=!tourAuto;
+  $('t-prev').disabled = n===0;
+  $('t-next').innerHTML = n===TOUR.length-1 ? 'Finish' : 'Next &rsaquo;';
+  $('t-auto').setAttribute('aria-pressed', tourAuto?'true':'false'); $('t-auto').textContent = tourAuto?'Pause autoplay':'Autoplay';
+  $('t-dots').innerHTML = TOUR.map(function(_,i){ return '<i'+(i===n?' class="on"':'')+'></i>'; }).join('');
+  var tv = step.vid ? VID : (ZVID[step.f] && ZVID[step.f][step.s]);
+  if(tv) setCardMedia(null,tv); else setCardImg(step.f && ZIMG[step.f] ? ZIMG[step.f] : null);
+  $('card').hidden=false; $('now').hidden=true;
+}
+function closeCard(){ $('card').hidden=true; openZone=null; setCardMedia(null,false); $('tnav').hidden=true; $('thint').hidden=true; $('card-bar').hidden=true; $('now').hidden=false; }
+$('card-x').addEventListener('click', function(){ if(tourOn) stopTour(); else closeCard(); });
+
+/* =============================== TOUR =============================== */
+/* Manual by default: Back / Next. Autoplay advances on a timer and pauses while the visitor drags or zooms.
+   Looking around never ends the tour; only Finish, the close button, Escape, or picking a stage yourself does. */
+var tourAuto=false, lastInteract=0;
+function startTour(auto){
+  tourOn=true; sawTour=true; tourAuto=!!auto;
+  $('btn-tour').setAttribute('aria-pressed','true'); $('btn-tour').textContent='Exit tour';
+  goStep(0);
+}
+function stopTour(){
+  if(!tourOn) return;
+  tourOn=false; tourAuto=false; $('gate').classList.remove('hot');
+  $('btn-tour').setAttribute('aria-pressed','false'); $('btn-tour').textContent='Take the guided tour';
+  closeCard();
+}
+function goStep(i){
+  tourIdx=(i+TOUR.length)%TOUR.length; tourT=0;
+  var s=TOUR[tourIdx];
+  if(s.s!==stage) setStage(s.s,true);
+  if(W3) W3.focus(s.f);
+  showTourCard(s,tourIdx);
+  $('gate').classList.toggle('hot', !!s.cta);
+}
+function nextStep(){ if(tourIdx>=TOUR.length-1 && !tourAuto){ finishTour(); return; } goStep(tourIdx+1); }
+function finishTour(){ stopTour(); var g=$('gate'); g.classList.add('hot'); try{ g.scrollIntoView({behavior:REDUCED?'auto':'smooth',block:'center'}); }catch(e){} setTimeout(function(){ g.classList.remove('hot'); },5000); }
+$('t-next').addEventListener('click', function(){ lastInteract=0; nextStep(); });
+$('t-prev').addEventListener('click', function(){ if(tourIdx>0){ lastInteract=0; goStep(tourIdx-1); } });
+$('t-auto').addEventListener('click', function(){ tourAuto=!tourAuto; tourT=0; showTourCard(TOUR[tourIdx],tourIdx); });
+$('btn-tour').addEventListener('click', function(){ if(tourOn) stopTour(); else startTour(false); });
+function activity(e){ idleT=0; if(e && e.type!=='keydown' && e.target && e.target.closest && e.target.closest('#scene')) lastInteract=performance.now(); }
+['pointerdown','pointermove','keydown','wheel'].forEach(function(ev){ document.addEventListener(ev, activity, {passive:true}); });
+
+for(var si=0;si<3;si++){ (function(i){ $('s'+i).addEventListener('click', function(){ if(tourOn) stopTour(); setStage(i,false); }); })(si); }
+document.addEventListener('keydown', function(e){
+  if(e.target && /input|textarea/i.test(e.target.tagName)) return;
+  if(tourOn){
+    if(e.key==='ArrowRight'){ nextStep(); return; }
+    if(e.key==='ArrowLeft'){ if(tourIdx>0) goStep(tourIdx-1); return; }
+    if(e.key==='Escape'){ stopTour(); return; }
+  }
+  if(e.key==='1'||e.key==='2'||e.key==='3'){ if(tourOn) stopTour(); setStage(+e.key-1,false); }
+});
+$('btn-reset').addEventListener('click', function(){ closeCard(); if(W3) W3.focus('stage'); });
+var fsBtn=$('btn-fs');
+if(document.fullscreenEnabled && document.documentElement.requestFullscreen){
+  fsBtn.hidden=false;
+  fsBtn.addEventListener('click', function(){
+    try{
+      if(!document.fullscreenElement){ var p=document.documentElement.requestFullscreen(); if(p&&p.catch) p.catch(function(){ fsBtn.hidden=true; }); }
+      else document.exitFullscreen();
+    }catch(err){ fsBtn.hidden=true; }
+  });
+  document.addEventListener('fullscreenchange', function(){ fsBtn.textContent=document.fullscreenElement?'Exit full screen':'Full screen'; });
+}
+
+/* =============================== LAYOUT =============================== */
+/* Below 1500px wide the rail becomes a drawer, and the stage overlays shrink based on the stage's own size. */
+var shellEl=document.querySelector('.shell'), stageBox=$('stage');
+function fitStage(){
+  var bar=document.querySelector('.bar'); if(bar) document.documentElement.style.setProperty('--barh', bar.offsetHeight+'px');
+  var w=stageBox.clientWidth, h=stageBox.clientHeight;
+  stageBox.classList.toggle('compact', w<1180 || h<760);
+  stageBox.classList.toggle('tight', w<760 || h<520);
+}
+function railOpen(on){ shellEl.classList.toggle('rail-open',on); $('btn-rail').setAttribute('aria-expanded',on?'true':'false'); $('btn-rail').textContent=on?'Hide details':'Stage details'; }
+$('btn-rail').addEventListener('click', function(){ railOpen(!shellEl.classList.contains('rail-open')); });
+$('rail-x').addEventListener('click', function(){ railOpen(false); });
+$('btn-pb').addEventListener('click', function(){
+  if(window.innerWidth<1500) railOpen(true);
+  var g=$('gate'); setTimeout(function(){ try{ g.scrollIntoView({behavior:REDUCED?'auto':'smooth',block:'center'}); }catch(e){} },window.innerWidth<1500?300:0);
+  openGate('Playbook');
+});
+$('brk-h').addEventListener('click', function(){ if(!stageBox.classList.contains('compact')) return; var b=$('brk'); var o=!b.classList.contains('open'); b.classList.toggle('open',o); this.setAttribute('aria-expanded',o?'true':'false'); $('brk-car').innerHTML=o?'Hide &#9652;':'Show &#9662;'; });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape' && shellEl.classList.contains('rail-open')) railOpen(false); });
+window.addEventListener('resize', fitStage);
+if(window.ResizeObserver) new ResizeObserver(fitStage).observe(stageBox);
+fitStage();
+
+/* =============================== READ LOG =============================== */
+var HEX='0123456789ABCDEF';
+function epc(){ var s='3034'; for(var i=0;i<16;i++) s+=HEX[(Math.random()*16)|0]; return s.replace(/(.{4})/g,'$1 ').trim(); }
+var LOGSRC=[['HH-2284','STOCK'],['PORTAL-01','RECV'],['POS-03','CHECKOUT'],['OVH-07','FLOOR']];
+function pushLog(t){ var r=$('log-rows'), d=document.createElement('div'); d.textContent=t; r.insertBefore(d,r.firstChild); while(r.children.length>8) r.removeChild(r.lastChild); }
+function streamRead(){
+  var pool = stage===0 ? [LOGSRC[0]] : stage===1 ? LOGSRC.slice(0,3) : LOGSRC;
+  var s=pool[(Math.random()*pool.length)|0];
+  pushLog(epc()+'  '+s[0]+'  '+s[1]+(stage===0?'  held':'  synced'));
+}
+for(var li=0;li<8;li++) streamRead();
+setInterval(function(){ if(!document.hidden) streamRead(); }, REDUCED?2600:1100);
+
+renderRail();
+
+/* =============================== 3D WORLD =============================== */
+function initWorld(){
+  var host=$('scene');
+  var W=Math.max(1,host.clientWidth), H=Math.max(1,host.clientHeight);
+  var SMALL = window.innerWidth<760;
+  var renderer=new THREE.WebGLRenderer({antialias:true, alpha:true, powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, SMALL?1.5:2));
+  renderer.setSize(W,H);
+  renderer.outputEncoding=THREE.sRGBEncoding;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=1.02;
+  renderer.shadowMap.enabled=true;
+  renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  host.appendChild(renderer.domElement);
+
+  var V3=THREE.Vector3;
+  var scene=new THREE.Scene();
+  function C(h){ return new THREE.Color(h).convertSRGBToLinear(); }
+  function std(h,r,m){ return new THREE.MeshStandardMaterial({color:C(h), roughness:r==null?.8:r, metalness:m||0}); }
+  function bx(w,h,d){ return new THREE.BoxGeometry(w,h,d); }
+  function add(geo,mat,x,y,z,parent,noShadow){
+    var o=new THREE.Mesh(geo,mat); o.position.set(x||0,y||0,z||0);
+    if(!noShadow){ o.castShadow=true; o.receiveShadow=true; }
+    (parent||scene).add(o); return o;
+  }
+  var seed=11; function sr(){ seed=(seed*16807)%2147483647; return (seed-1)/2147483646; }
+  var COL={azure:C('#1898ff'), blue:C('#1f69ff'), violet:C('#784dff'), peri:C('#7070ff'), amber:C('#ffb547'), flash:C('#8fd0ff'), flashV:C('#b9a2ff'), red:C('#ff5a6a')};
+
+  /* ---------- camera + controls ---------- */
+  var F=34, aspect=W/H;
+  var camera=new THREE.OrthographicCamera(-F*aspect/2,F*aspect/2,F/2,-F/2,-600,1200);
+  var AZ=0.92, POL=0.98, DIST=180;
+  var target0=new V3(-8.6,0.8,0);
+  camera.position.set(target0.x+DIST*Math.sin(POL)*Math.sin(AZ), target0.y+DIST*Math.cos(POL), target0.z+DIST*Math.sin(POL)*Math.cos(AZ));
+  camera.zoom=1.5*fit(); camera.updateProjectionMatrix(); camera.lookAt(target0);
+  function fit(){ var a=W/H; return Math.max(.42, Math.min(1, a/1.55)); }
+
+  var controls=null, target=target0.clone();
+  if(THREE.OrbitControls){
+    controls=new THREE.OrbitControls(camera, renderer.domElement);
+    controls.target.copy(target0); target=controls.target;
+    controls.enableDamping=true; controls.dampingFactor=.08;
+    controls.enablePan=false; controls.minZoom=.25; controls.maxZoom=3.6;
+    controls.minPolarAngle=.45; controls.maxPolarAngle=1.22;
+    controls.rotateSpeed=.55; controls.zoomSpeed=.8; controls.autoRotateSpeed=.35;
+    controls.update();
+  }
+
+  /* ---------- lights ---------- */
+  scene.add(new THREE.HemisphereLight(C('#eef1ff'), C('#5a4a3c'), .8));
+  var sun=new THREE.DirectionalLight(0xffffff,1.25);
+  sun.position.set(12,32,20); sun.target.position.set(-1,0,0); scene.add(sun); scene.add(sun.target);
+  sun.castShadow=true; var smz=SMALL?1024:2048; sun.shadow.mapSize.set(smz,smz);
+  var shc=sun.shadow.camera; shc.left=-30; shc.right=30; shc.top=24; shc.bottom=-24; shc.near=1; shc.far=100;
+  sun.shadow.bias=-.0004; sun.shadow.normalBias=.03; sun.shadow.radius=3;
+  var fill=new THREE.DirectionalLight(C('#b9c2ff'),.32); fill.position.set(-22,14,-12); scene.add(fill);
+
+  /* ---------- canvas textures ---------- */
+  var maxAniso=Math.min(8, renderer.capabilities.getMaxAnisotropy());
+  function ctex(w,h,draw,rx,ry){
+    var c=document.createElement('canvas'); c.width=w; c.height=h; draw(c.getContext('2d'),w,h);
+    var t=new THREE.CanvasTexture(c); t.encoding=THREE.sRGBEncoding; t.anisotropy=maxAniso;
+    if(rx){ t.wrapS=t.wrapT=THREE.RepeatWrapping; t.repeat.set(rx,ry); }
+    return t;
+  }
+  function reTex(t,rx,ry){ var n=t.clone(); n.needsUpdate=true; n.wrapS=n.wrapT=THREE.RepeatWrapping; n.repeat.set(rx,ry); return n; }
+  var concreteTex=ctex(512,512,function(g,w,h){
+    g.fillStyle='#a6a8ab'; g.fillRect(0,0,w,h);
+    var id=g.getImageData(0,0,w,h), d=id.data;
+    for(var i=0;i<d.length;i+=4){ var n=(sr()-.5)*16; d[i]+=n; d[i+1]+=n; d[i+2]+=n; }
+    g.putImageData(id,0,0);
+    for(var k=0;k<16;k++){ var x=sr()*w,y=sr()*h,r=40+sr()*130, gr=g.createRadialGradient(x,y,0,x,y,r);
+      gr.addColorStop(0,'rgba(80,82,88,0.10)'); gr.addColorStop(1,'rgba(80,82,88,0)'); g.fillStyle=gr; g.fillRect(x-r,y-r,r*2,r*2); }
+    for(var s=0;s<5;s++){ var x2=sr()*w,y2=sr()*h,r2=60+sr()*90, g2=g.createRadialGradient(x2,y2,0,x2,y2,r2);
+      g2.addColorStop(0,'rgba(255,255,255,0.10)'); g2.addColorStop(1,'rgba(255,255,255,0)'); g.fillStyle=g2; g.fillRect(x2-r2,y2-r2,r2*2,r2*2); }
+    g.fillStyle='rgba(70,72,78,0.45)'; g.fillRect(0,0,w,2); g.fillRect(0,0,2,h);
+  }, 19/4, 16/4);
+  var woodTex=ctex(1024,1024,function(g,w,h){
+    g.fillStyle='#cdb796'; g.fillRect(0,0,w,h);
+    var ph=48;
+    for(var y=0;y<h;y+=ph){
+      var x=-sr()*300;
+      while(x<w){ var L=240+sr()*380, v=(sr()-.5)*24;
+        g.fillStyle='rgb('+((208+v)|0)+','+((186+v)|0)+','+((152+v*.8)|0)+')'; g.fillRect(x,y,L,ph);
+        g.strokeStyle='rgba(120,88,58,0.10)'; g.lineWidth=1;
+        for(var k=0;k<4;k++){ var gy=y+4+sr()*(ph-8); g.beginPath(); g.moveTo(x,gy); g.bezierCurveTo(x+L*.3,gy+(sr()-.5)*5,x+L*.65,gy+(sr()-.5)*5,x+L,gy); g.stroke(); }
+        g.fillStyle='rgba(92,66,42,0.30)'; g.fillRect(x,y,2,ph); x+=L; }
+      g.fillStyle='rgba(92,66,42,0.26)'; g.fillRect(0,y,w,2);
+    }
+  }, 23/7, 16/7);
+  var tapeTex=ctex(128,32,function(g,w,h){ g.fillStyle='#e8c11e'; g.fillRect(0,0,w,h); g.fillStyle='#1c1c1e';
+    for(var x=-h;x<w+h;x+=32){ g.beginPath(); g.moveTo(x,0); g.lineTo(x+14,0); g.lineTo(x+14-h,h); g.lineTo(x-h,h); g.closePath(); g.fill(); } });
+  var hatchTex=ctex(64,64,function(g,w,h){ g.fillStyle='rgba(0,0,33,0.55)'; g.fillRect(0,0,w,h); g.strokeStyle='rgba(0,0,33,0.95)'; g.lineWidth=7;
+    for(var i=-w;i<w*2;i+=18){ g.beginPath(); g.moveTo(i,0); g.lineTo(i+h,h); g.stroke(); } });
+  var slatTex=ctex(64,64,function(g,w,h){ g.fillStyle='#a1a5ab'; g.fillRect(0,0,w,h); g.fillStyle='rgba(60,62,66,.5)'; for(var y=0;y<h;y+=8) g.fillRect(0,y,w,2); }, 1, 3);
+  var exitTex=ctex(128,48,function(g,w,h){ g.fillStyle='#c8231c'; g.fillRect(0,0,w,h); g.fillStyle='#fff'; g.font='bold 30px Arial,sans-serif'; g.textAlign='center'; g.textBaseline='middle'; g.fillText('EXIT',w/2,h/2+1); });
+  var aoTex=ctex(128,128,function(g,w,h){ g.shadowColor='rgba(0,0,0,0.7)'; g.shadowBlur=26; g.fillStyle='rgba(0,0,0,0.7)'; g.fillRect(30,30,w-60,h-60); });
+  var lightboxTex=ctex(512,320,function(g,w,h){ var gr=g.createLinearGradient(0,0,w,h); gr.addColorStop(0,'#784dff'); gr.addColorStop(.6,'#1f69ff'); gr.addColorStop(1,'#1898ff'); g.fillStyle=gr; g.fillRect(0,0,w,h);
+    g.fillStyle='rgba(255,255,255,0.14)'; g.beginPath(); g.ellipse(w*.62,h*.62,w*.34,h*.22,-.35,0,Math.PI*2); g.fill();
+    g.fillStyle='rgba(255,255,255,0.9)'; g.beginPath(); g.ellipse(w*.62,h*.6,w*.2,h*.07,-.18,0,Math.PI*2); g.fill(); });
+  function ao(w,d,x,z,o){ var m=new THREE.MeshBasicMaterial({map:aoTex,transparent:true,opacity:o||.6,depthWrite:false});
+    var p=new THREE.Mesh(new THREE.PlaneGeometry(w,d),m); p.rotation.x=-Math.PI/2; p.position.set(x,.011,z); p.renderOrder=1; scene.add(p); return p; }
+  function tape(x0,z0,x1,z1){ var dx=x1-x0,dz=z1-z0,L=Math.hypot(dx,dz);
+    var m=new THREE.Mesh(new THREE.PlaneGeometry(L,.07), new THREE.MeshStandardMaterial({map:reTex(tapeTex,L/.45,1),roughness:.6}));
+    m.rotation.x=-Math.PI/2; m.rotation.z=Math.atan2(-dz,dx); m.position.set((x0+x1)/2,.007,(z0+z1)/2); m.receiveShadow=true; scene.add(m); }
+
+  /* ---------- materials ---------- */
+  var M={
+    base:std('#0a0b3a',.55,.1), wall:std('#ececef',.92), wallSales:std('#e3dacd',.9),
+    steel:std('#6e757f',.42,.6), steelDark:std('#454a54',.5,.5), deck:std('#848a94',.48,.5),
+    door:std('#6c7178',.55,.35), wood:std('#a87c50',.85), kraft:std('#b8895a',.88),
+    white:std('#f2f2f4',.55), black:std('#1d1f25',.6), counter:std('#262a34',.5,.1), top:std('#e8e5df',.3),
+    yellow:std('#e3b52a',.5), red:std('#c4271f',.45), chrome:std('#c9ced6',.2,.9), glass:std('#a9bccb',.08,.6),
+    shelfW:std('#f4f3f0',.5), oak:std('#c9a57a',.55), uph:std('#3a3f4b',.92), pot:std('#2a2c33',.6), leaf:std('#3f6c48',.85),
+    readerW:std('#eef0f3',.4,.1)
+  };
+
+  /* ---------- diorama base, floors ---------- */
+  var slab=add(bx(42.8,1.0,16.8),M.base,-1,-.5,0); slab.castShadow=false;
+  var rim=new THREE.LineSegments(new THREE.EdgesGeometry(bx(42.8,1.0,16.8)), new THREE.LineBasicMaterial({color:C('#4b52c8'),transparent:true,opacity:.55}));
+  rim.position.set(-1,-.5,0); scene.add(rim);
+  var fConc=new THREE.Mesh(new THREE.PlaneGeometry(19,16), new THREE.MeshStandardMaterial({map:concreteTex,roughness:.82}));
+  fConc.rotation.x=-Math.PI/2; fConc.position.set(-12.5,.003,0); fConc.receiveShadow=true; scene.add(fConc);
+  var fWood=new THREE.Mesh(new THREE.PlaneGeometry(23,16), new THREE.MeshStandardMaterial({map:woodTex,roughness:.5}));
+  fWood.rotation.x=-Math.PI/2; fWood.position.set(8.5,.003,0); fWood.receiveShadow=true; scene.add(fWood);
+
+  /* ---------- walls and architecture ---------- */
+  add(bx(19,4,.2),M.wall,-12.5,2,-8.1);
+  add(bx(23,4,.2),M.wallSales,8.5,2,-8.1);
+  add(bx(.2,4,5.8),M.wall,-22.1,2,-5.1); add(bx(.2,4,5.8),M.wall,-22.1,2,5.1); add(bx(.2,.85,4.4),M.wall,-22.1,3.575,0);
+  add(bx(.08,.9,4.4), new THREE.MeshStandardMaterial({map:slatTex,roughness:.55,metalness:.3}), -22.0,2.7,0);
+  add(bx(.25,.35,.28),M.black,-21.9,.4,-2.4); add(bx(.25,.35,.28),M.black,-21.9,.4,2.4);
+  add(bx(.18,2.6,10.6),M.wall,-3,1.3,-2.7); add(bx(.18,2.6,3.2),M.wall,-3,1.3,6.4);
+  (function(){ var g1=new THREE.Group(); g1.position.set(-3,0,2.6); g1.rotation.y=.75; scene.add(g1); add(bx(.05,2.1,1.05),M.door,0,1.05,.525,g1);
+    var g2=new THREE.Group(); g2.position.set(-3,0,4.8); g2.rotation.y=-.75; scene.add(g2); add(bx(.05,2.1,1.05),M.door,0,1.05,-.525,g2); })();
+  add(bx(1.0,2.15,.06),M.door,-9.7,1.075,-7.97);
+  add(bx(.24,.5,.02),M.glass,-9.7,1.55,-7.93,null,true);
+  var ex=new THREE.Mesh(new THREE.PlaneGeometry(.46,.17), new THREE.MeshBasicMaterial({map:exitTex,toneMapped:false})); ex.position.set(-9.7,2.45,-7.99); scene.add(ex);
+  add(new THREE.CylinderGeometry(.09,.09,.46,14),M.red,-8.6,1.2,-7.88);
+  var duct=add(new THREE.CylinderGeometry(.18,.18,19,18),std('#c3c7cc',.32,.75),-12.5,3.65,-7.55); duct.rotation.z=Math.PI/2;
+  var pipe=add(new THREE.CylinderGeometry(.05,.05,19,10),M.steel,-12.5,3.25,-7.75); pipe.rotation.z=Math.PI/2;
+  var lampMat=new THREE.MeshStandardMaterial({color:0xffffff, emissive:C('#f3f6ff'), emissiveIntensity:1.8});
+  [-10.8,-7.2,-3.95].forEach(function(x){ [-3,0.2,3.4].forEach(function(z){ add(bx(.14,.05,1.3),lampMat,x,3.4,z,null,true); add(bx(.01,.5,.01),M.steel,x,3.67,z-.5,null,true); add(bx(.01,.5,.01),M.steel,x,3.67,z+.5,null,true); }); });
+  var warm=new THREE.MeshStandardMaterial({color:0xffffff, emissive:C('#ffe7c4'), emissiveIntensity:1.6});
+  [0.5,4.5,8.5,12].forEach(function(x){ [-3.5,1.5].forEach(function(z){ add(new THREE.CylinderGeometry(.16,.22,.22,16),M.black,x,3.75,z,null,true); add(new THREE.CylinderGeometry(.15,.15,.02,16),warm,x,3.63,z,null,true); add(bx(.01,.6,.01),M.black,x,4.15,z,null,true); }); });
+  [-7.2,-5.6,-4.0,-2.4,2.8,4.4,6.0,7.2].forEach(function(z){ add(new THREE.CylinderGeometry(.09,.09,.95,14),M.yellow,-15,.475,z); });
+  tape(-15.25,-8,-15.25,8);
+  tape(-21.8,-2.7,-19.2,-2.7); tape(-21.8,3.5,-19.2,3.5);
+
+  /* ---------- stockroom shelving + shoe boxes (instanced) ---------- */
+  var PAL=[['#b8895a',30],['#24262c',18],['#e6e3dc',12],['#2f62b3',11],['#c2382e',9],['#8c9097',8],['#2e95ae',6],['#d9792e',3],['#7a4fd0',3]];
+  var PALC=PAL.map(function(p){return [C(p[0]),p[1]];}), PALT=PAL.reduce(function(a,p){return a+p[1];},0);
+  function pick(){ var r=sr()*PALT; for(var i=0;i<PALC.length;i++){ r-=PALC[i][1]; if(r<=0) return PALC[i][0]; } return PALC[0][0]; }
+  var RUNS=[-12.6,-9.0,-5.4], LEV=[.12,.66,1.2,1.74,2.28];
+  var slots=[];
+  RUNS.forEach(function(xc,ri){
+    [-5.5,-2.75,0,2.75,5.5].forEach(function(z){ [-.39,.39].forEach(function(o){ add(bx(.05,2.32,.05),M.steel,xc+o,1.16,z); }); });
+    LEV.forEach(function(y){ add(bx(.82,.03,11.05),M.deck,xc,y,0); });
+    ao(1.7,12,xc,0,.55);
+    tape(xc+.62,-5.9,xc+.62,5.9); tape(xc-.62,-5.9,xc-.62,5.9);
+    for(var li=0;li<4;li++){
+      [-1,1].forEach(function(s){
+        var z=-5.38, grp=0, col=null, stackMax=3;
+        while(z<5.4){
+          if(grp<=0){ col=pick(); grp=3+Math.floor(sr()*7); stackMax=sr()<.3?2:3; }
+          grp--;
+          if(sr()<.05){ z+=.215; continue; }
+          var n=stackMax-(sr()<.15?1:0);
+          for(var k=0;k<n;k++) slots.push({x:xc+s*.215+(sr()-.5)*.025, y:LEV[li]+.015+.0625+k*.126, z:z, side:s, run:ri, col:col, lbl:true});
+          z+=.215;
+        }
+      });
+    }
+    var tz=-5.1;
+    while(tz<5.2){ if(sr()<.82){ var nn=sr()<.5?2:1; for(var q=0;q<nn;q++) slots.push({x:xc, y:2.295+.16+q*.32, z:tz, side:0, run:ri, col:C(sr()<.85?'#b8895a':'#e6e3dc'), sx:2.1, sy:2.55, sz:2.3, lbl:false}); } tz+=.52; }
+  });
+  var NB=slots.length;
+  var boxes=new THREE.InstancedMesh(bx(.34,.125,.2), new THREE.MeshStandardMaterial({roughness:.72}), NB);
+  boxes.castShadow=true; boxes.receiveShadow=true;
+  var dummy=new THREE.Object3D(), boxBase=[], boxPos=new Float32Array(NB*3), boxFlash=new Float32Array(NB), boxActive=[];
+  var lblList=[];
+  slots.forEach(function(b,i){
+    dummy.position.set(b.x,b.y,b.z); dummy.rotation.set(0,0,0); dummy.scale.set(b.sx||1,b.sy||1,b.sz||1); dummy.updateMatrix();
+    boxes.setMatrixAt(i,dummy.matrix);
+    var c=b.col.clone().multiplyScalar(.88+sr()*.2); boxBase.push(c); boxes.setColorAt(i,c);
+    boxPos[i*3]=b.x; boxPos[i*3+1]=b.y; boxPos[i*3+2]=b.z;
+    if(b.lbl) lblList.push(b);
+  });
+  boxes.instanceColor.needsUpdate=true; scene.add(boxes);
+  var lbls=new THREE.InstancedMesh(new THREE.PlaneGeometry(.085,.05), std('#f6f6f3',.7), lblList.length);
+  lblList.forEach(function(b,i){ dummy.position.set(b.x+b.side*.172,b.y-.012,b.z); dummy.rotation.set(0,b.side>0?Math.PI/2:-Math.PI/2,0); dummy.scale.set(1,1,1); dummy.updateMatrix(); lbls.setMatrixAt(i,dummy.matrix); });
+  lbls.receiveShadow=true; scene.add(lbls);
+  var coneCand=[]; for(var ci=0;ci<NB;ci++){ if(slots[ci].run===1 && slots[ci].side===1) coneCand.push(ci); }
+
+  /* ---------- carts, pallets ---------- */
+  function cart(x,z,ry){ var g=new THREE.Group(); g.position.set(x,0,z); g.rotation.y=ry; scene.add(g);
+    [[-.45,-.27],[.45,-.27],[-.45,.27],[.45,.27]].forEach(function(p){ add(bx(.03,1.0,.03),M.steelDark,p[0],.55,p[1],g); add(bx(.07,.08,.07),M.black,p[0],.04,p[1],g); });
+    add(bx(.95,.03,.58),M.steelDark,0,.3,0,g); add(bx(.95,.03,.58),M.steelDark,0,.9,0,g);
+    add(bx(.42,.34,.38),M.kraft,-.2,.49,0,g); add(bx(.36,.26,.32),M.kraft,.24,1.045,.03,g); add(bx(.32,.22,.3),std('#2f62b3',.8),-.18,1.02,-.04,g); }
+  cart(-3.9,-6.4,.25); cart(-13.9,6.4,-.2);
+  function pallet(parent,x,z){ var g=new THREE.Group(); g.position.set(x,0,z); parent.add(g);
+    for(var i=0;i<5;i++) add(bx(1.2,.025,.15),M.wood,0,.137,-.44+i*.22,g);
+    [-.5,0,.5].forEach(function(o){ add(bx(.12,.1,1.0),M.wood,o,.07,0,g); }); return g; }
+  function stackOn(g,layers,mats){ var list=[];
+    for(var L=0;L<layers;L++) for(var a=-1;a<=1;a+=2) for(var b=-1;b<=1;b+=2){
+      var m=mats?M.kraft.clone():M.kraft; var c=add(bx(.56,.42,.47),m,a*.29,.36+L*.425,b*.245,g); list.push(c); }
+    return list; }
+  [[-20.6,-6.1,3],[-19.1,-6.3,2],[-20.6,6.1,2]].forEach(function(p){ var g=pallet(scene,p[0],p[1]); stackOn(g,p[2],false);
+    var wrap=new THREE.Mesh(bx(1.22,p[2]*.425+.03,1.02), new THREE.MeshStandardMaterial({color:0xffffff,transparent:true,opacity:.16,roughness:.15,depthWrite:false}));
+    wrap.position.set(0,.15+p[2]*.2125,0); g.add(wrap); ao(1.6,1.4,p[0],p[1],.5); });
+
+  /* ---------- sales floor ---------- */
+  for(var sx=-2.6; sx<=12.6; sx+=1.27) add(bx(.04,2.7,.03),M.steelDark,sx,1.55,-7.98);
+  var SHELFY=[.55,.95,1.35,1.75,2.15];
+  SHELFY.forEach(function(y){ add(bx(15.2,.025,.3),M.shelfW,5,y,-7.85); });
+  var lb=new THREE.Mesh(new THREE.PlaneGeometry(2.6,1.5), new THREE.MeshBasicMaterial({map:lightboxTex,toneMapped:false}));
+  lb.rotation.y=Math.PI/2; lb.position.set(-2.88,1.45,-4.6); scene.add(lb);
+  add(bx(.03,1.6,2.7),M.black,-2.9,1.45,-4.6,null,true);
+  var shoeSlots=[];
+  var SPAL=[['#f2f2f2',4],['#1b1c21',4],['#c2382e',2],['#2f62b3',2],['#8a9b6e',1],['#d9a441',1],['#7d4fd6',1],['#9aa3ad',2],['#e98b3a',1]];
+  var SPC=SPAL.map(function(p){return [C(p[0]),p[1]];}), SPT=SPAL.reduce(function(a,p){return a+p[1];},0);
+  function spick(){ var r=sr()*SPT; for(var i=0;i<SPC.length;i++){ r-=SPC[i][1]; if(r<=0) return SPC[i][0]; } return SPC[0][0]; }
+  SHELFY.forEach(function(y){ for(var x=-2.25;x<12.4;x+=.47){ if(sr()<.06) continue; shoeSlots.push({x:x+(sr()-.5)*.05,y:y+.0125,z:-7.82,ry:(sr()-.5)*.25,col:spick()}); } });
+  function table(x,z){ add(bx(1.95,.05,.95),M.oak,x,.74,z); add(bx(1.7,.7,.75),M.white,x,.355,z); ao(2.4,1.4,x,z,.45);
+    for(var i=0;i<3;i++) for(var j=0;j<2;j++) shoeSlots.push({x:x-.6+i*.6,y:.765,z:z-.22+j*.44,ry:(sr()-.5)*.9,col:spick()}); }
+  table(2.2,-2.2); table(7.4,-2.2);
+  add(bx(2.6,.26,1.2),M.white,5.0,.13,5.6); ao(3,1.6,5.0,5.6,.4);
+  for(var pi=0;pi<4;pi++) shoeSlots.push({x:4.1+pi*.6,y:.26,z:5.6,ry:(sr()-.5)*.6,col:spick()});
+  function bench(x,z){ add(bx(1.7,.14,.52),M.uph,x,.42,z); add(bx(1.6,.32,.06),M.black,x,.18,z-.2); add(bx(1.6,.32,.06),M.black,x,.18,z+.2); ao(2,1,x,z,.4); }
+  bench(2.2,2.3); bench(7.4,2.3);
+  function plant(x,z){ add(new THREE.CylinderGeometry(.3,.24,.55,18),M.pot,x,.275,z); [[0,.95,0,.38],[.2,.8,.12,.3],[-.18,.82,-.1,.3],[.05,1.18,.02,.26]].forEach(function(p){ add(new THREE.SphereGeometry(p[3],14,10),M.leaf,x+p[0],p[1],z+p[2]); }); }
+  plant(12.3,6.9); plant(-2.2,7.0);
+  var NS=shoeSlots.length;
+  var soleGeo=bx(.29,.035,.105); soleGeo.translate(0,.0175,0);
+  var upGeo=bx(.235,.085,.092); upGeo.translate(-.018,.077,0);
+  var soles=new THREE.InstancedMesh(soleGeo,std('#f3f3f1',.6),NS), uppers=new THREE.InstancedMesh(upGeo,new THREE.MeshStandardMaterial({roughness:.65}),NS);
+  soles.castShadow=uppers.castShadow=true; soles.receiveShadow=uppers.receiveShadow=true;
+  var shoeBase=[], shoePos=new Float32Array(NS*3), shoeFlash=new Float32Array(NS), shoeActive=[];
+  shoeSlots.forEach(function(s,i){ dummy.position.set(s.x,s.y,s.z); dummy.rotation.set(0,s.ry,0); dummy.scale.set(1,1,1); dummy.updateMatrix();
+    soles.setMatrixAt(i,dummy.matrix); uppers.setMatrixAt(i,dummy.matrix); shoeBase.push(s.col.clone()); uppers.setColorAt(i,s.col);
+    shoePos[i*3]=s.x; shoePos[i*3+1]=s.y+.06; shoePos[i*3+2]=s.z; });
+  uppers.instanceColor.needsUpdate=true; scene.add(soles); scene.add(uppers);
+  var wallCand=[]; for(var wi=0;wi<NS;wi++){ if(shoeSlots[wi].z<-7.5) wallCand.push(wi); }
+
+  /* ---------- checkout ---------- */
+  add(bx(1.0,1.0,3.3),M.counter,16.2,.5,1.0); add(bx(1.12,.05,3.42),M.top,16.2,1.025,1.0); ao(1.8,4,16.2,1.0,.5);
+  var screenMat=new THREE.MeshStandardMaterial({color:C('#0b1030'),emissive:C('#1f69ff'),emissiveIntensity:.55,roughness:.3});
+  [0.15,1.85].forEach(function(z){ add(bx(.2,.05,.2),M.black,16.45,1.075,z); add(bx(.04,.24,.04),M.black,16.45,1.22,z);
+    var s=add(bx(.04,.24,.34),screenMat,16.5,1.38,z); s.rotation.z=-.25; add(bx(.12,.1,.16),M.black,15.9,1.1,z+.4); });
+  add(bx(.6,.9,2.4),M.counter,18.7,.45,1.0); add(bx(.66,.04,2.5),M.top,18.7,.92,1.0);
+  [[18.6,1.1,.3,'#c2382e'],[18.75,1.08,1.0,'#e6e3dc'],[18.6,1.12,1.7,'#24262c']].forEach(function(b){ add(bx(.4,.32,.18),std(b[3],.8),b[0],b[1],b[2]); });
+  var mat=new THREE.Mesh(new THREE.PlaneGeometry(2.4,3.8), std('#2a2d35',.95)); mat.rotation.x=-Math.PI/2; mat.position.set(15.0,.008,1.0); mat.receiveShadow=true; scene.add(mat);
+  [3.0,4.3,5.6].forEach(function(z,i){ add(new THREE.CylinderGeometry(.04,.06,1.0,12),M.chrome,14.3,.5,z); add(new THREE.CylinderGeometry(.14,.14,.03,16),M.chrome,14.3,.015,z);
+    if(i<2) add(bx(.02,.05,1.26),std('#1f69ff',.6),14.3,.88,z+.65); });
+
+  /* ---------- people ---------- */
+  function person(o){
+    var g=new THREE.Group(), body=new THREE.Group(); g.add(body);
+    var shirt=std(o.shirt,.85), pants=std(o.pants||'#17181d',.8), skin=std(o.skin,.6), hair=std(o.hair||'#1b1512',.9), shoe=std('#141418',.6);
+    var legs=[], arms=[];
+    [.1,-.1].forEach(function(x){ var lg=new THREE.Group(); lg.position.set(x,.86,0); body.add(lg);
+      add(bx(.14,.82,.16),pants,0,-.41,0,lg); add(bx(.13,.08,.27),shoe,0,-.82,.05,lg); legs.push(lg); });
+    add(bx(.38,.18,.22),pants,0,.9,0,body);
+    add(bx(.42,.56,.25),shirt,0,1.2,0,body);
+    add(new THREE.CylinderGeometry(.05,.055,.1,10),skin,0,1.52,0,body);
+    var head=add(new THREE.SphereGeometry(.115,18,14),skin,0,1.65,0,body);
+    var hr=add(new THREE.SphereGeometry(.122,18,10,0,Math.PI*2,0,Math.PI*.55),hair,0,1.665,-.008,body);
+    if(o.vest) add(bx(.445,.46,.27),std('#d4e348',.65),0,1.22,0,body);
+    if(o.lanyard){ add(bx(.022,.3,.01),std('#1f69ff',.6),0,1.36,.128,body); add(bx(.075,.1,.01),M.white,0,1.18,.13,body); }
+    [.26,-.26].forEach(function(x){ var ag=new THREE.Group(); ag.position.set(x,1.42,0); body.add(ag);
+      add(bx(.115,.25,.13),shirt,0,-.12,0,ag); add(bx(.085,.34,.09),skin,0,-.41,0,ag);
+      var hand=new THREE.Object3D(); hand.position.set(0,-.62,0); ag.add(hand); arms.push({g:ag,hand:hand}); });
+    scene.add(g);
+    return {g:g, body:body, legs:legs, armR:arms[1], armL:arms[0], head:head, ph:Math.random()*6};
+  }
+  function animWalk(p,dt,speed,amp){ p.ph+=dt*speed; var s=Math.sin(p.ph)*amp; p.legs[0].rotation.x=s; p.legs[1].rotation.x=-s; p.body.position.y=Math.abs(Math.sin(p.ph))*.025*(amp>0?1:0); }
+  function face(p,dx,dz){ p.g.rotation.y=Math.atan2(dx,dz); }
+
+  /* TC22R-style integrated handheld: pistol grip, body along the arm, RFID head at the front, phone on top */
+  var devBlack=std('#16171b',.45,.15), devHead=std('#24262c',.4,.2);
+  var devScreen=new THREE.MeshStandardMaterial({color:C('#0b1030'),emissive:C('#1f69ff'),emissiveIntensity:.75,roughness:.2});
+  function handheld(arm){ var dev=new THREE.Group(); arm.hand.add(dev);
+    add(bx(.055,.07,.14),devBlack,0,0,-.03,dev);
+    add(bx(.085,.24,.07),devBlack,0,-.08,.075,dev);
+    add(bx(.118,.075,.13),devHead,0,-.215,.07,dev);
+    add(bx(.06,.006,.06),std('#3a3d45',.3,.4),0,-.254,.07,dev);
+    add(bx(.08,.17,.012),devBlack,0,-.075,.116,dev);
+    add(bx(.068,.15,.004),devScreen,0,-.075,.124,dev);
+    return dev; }
+  function coneMesh(arm,len,rad,col){
+    var g=new THREE.ConeGeometry(rad,len,32,1,true);
+    var m=new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:.16,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide,toneMapped:false});
+    var c=new THREE.Mesh(g,m); c.position.y=-.62-len/2; arm.g.add(c);
+    var g2=new THREE.ConeGeometry(rad*.45,len,24,1,true); var c2=new THREE.Mesh(g2,m.clone()); c2.material.opacity=.12; c2.position.y=-.62-len/2; arm.g.add(c2);
+    return {a:c,b:c2}; }
+
+  var A=person({shirt:'#1f2128',skin:'#b98563',hair:'#1b1512',lanyard:true}); face(A,-1,0);
+  var AX=-7.25; A.g.position.set(AX,0,0); handheld(A.armR); var Acone=coneMesh(A.armR,3.0,1.3,COL.violet);
+  var Fp=person({shirt:'#1f2128',skin:'#e2b996',hair:'#6b4a2b',lanyard:true}); face(Fp,0,-1); Fp.g.position.set(4,0,-6.55); handheld(Fp.armR); var Fcone=coneMesh(Fp.armR,2.6,1.15,COL.azure);
+  var cashier=person({shirt:'#1f2128',skin:'#8d5a3b',hair:'#151012',lanyard:true}); cashier.g.position.set(17.15,0,1.0); face(cashier,-1,0);
+  cashier.armR.g.rotation.x=-.75; cashier.armL.g.rotation.x=-.6;
+  var cust=person({shirt:'#4f6f94',pants:'#2d3b55',skin:'#d8a982',hair:'#3a2a1e'}); cust.g.position.set(15.25,0,1.05); face(cust,1,0);
+  cust.armR.g.rotation.x=-.85; cust.armL.g.rotation.x=-.85;
+  var custBox=add(bx(.34,.125,.2),std('#c2382e',.7).clone(),0,0,0); custBox.position.set(15.62,1.06,1.05);
+  var shopper1=person({shirt:'#b65a3c',pants:'#2a2c33',skin:'#f0c7a5',hair:'#c49a5a'}); shopper1.g.position.set(2.2,0,-1.25); face(shopper1,0,-1); shopper1.armR.g.rotation.x=-.9;
+  var shopper2=person({shirt:'#5c7b5a',pants:'#c9bfae',skin:'#6f4630',hair:'#0f0b0a'}); shopper2.g.position.set(7.4,0,-1.2); face(shopper2,0,-1);
+  var pusher=person({shirt:'#3b3f48',skin:'#7a4b33',hair:'#120d0b',vest:true});
+  pusher.armR.g.rotation.x=-.7; pusher.armL.g.rotation.x=-.7;
+
+  /* ---------- receiving: pallet jack + portal ---------- */
+  var jack=new THREE.Group(); scene.add(jack);
+  add(bx(1.15,.05,.16),M.black,.0,.05,-.25,jack); add(bx(1.15,.05,.16),M.black,.0,.05,.25,jack);
+  add(bx(.24,.32,.6),std('#c4271f',.5),-.72,.2,0,jack);
+  var hnd=add(new THREE.CylinderGeometry(.025,.025,1.05,8),M.black,-.92,.72,0,jack); hnd.rotation.z=.42;
+  var jp=pallet(jack,0,0); jp.position.y=.06;
+  var cartons=stackOn(jp,2,true);
+  cartons.forEach(function(c){ c.userData.f=0; c.userData.read=false; });
+  /* Dock-door portal, modeled on Zebra's fixed RFID animation: yellow guard posts, slim antenna panels facing the lane,
+     fixed reader (FX-style black box with green status bar) on the wall, cabled to the antennas */
+  var PORTAL_X=-20.7, JZ=.4;
+  var portal=new THREE.Group(); portal.position.set(PORTAL_X,0,JZ); scene.add(portal);
+  var cable=std('#121316',.6);
+  [-1.32,1.32].forEach(function(z){ var s=z>0?1:-1;
+    add(bx(.14,2.6,.14),M.yellow,0,1.3,z,portal); add(bx(.3,.03,.3),M.steelDark,0,.015,z,portal);
+    add(bx(.34,1.55,.06),M.readerW,0,1.35,z-s*.11,portal);
+    add(bx(.26,1.4,.012),std('#d9dce2',.5),0,1.35,z-s*.145,portal);
+    add(bx(.02,.02,.2),cable,0,2.3,z-s*.05,portal); });
+  var fxBody=std('#141519',.4,.2);
+  add(bx(.07,.34,.46),fxBody,-1.24,1.55,-3.4,portal);
+  add(bx(.012,.03,.3),new THREE.MeshStandardMaterial({color:C('#0b1a0b'),emissive:C('#53d769'),emissiveIntensity:1.4}),-1.2,1.67,-3.4,portal);
+  add(bx(.022,1.28,.022),cable,-1.24,.7,-3.32,portal,true);
+  add(bx(.022,.022,1.94),cable,-1.24,.02,-2.35,portal,true);
+  add(bx(1.24,.022,.022),cable,-.62,.02,-1.38,portal,true);
+  add(bx(.022,.022,2.65),cable,-.2,2.62,0,portal,true);
+  add(bx(.022,1.1,.022),cable,-1.24,2.05,-3.32,portal,true);
+  add(bx(1.05,.022,.022),cable,-.72,2.62,-1.32,portal,true);
+  var fieldMat=new THREE.MeshBasicMaterial({color:COL.azure,transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending,toneMapped:false,side:THREE.DoubleSide});
+  var field=new THREE.Mesh(bx(.9,2.3,2.45),fieldMat); field.position.y=1.17; portal.add(field);
+  portal.scale.set(1,.001,1);
+
+  var posHW=new THREE.Group(); scene.add(posHW);
+  var padMat=new THREE.MeshBasicMaterial({color:COL.azure,transparent:true,opacity:.0,toneMapped:false,depthWrite:false});
+  var pad=new THREE.Mesh(bx(.62,.008,.46),padMat); pad.position.set(15.95,1.055,1.0); posHW.add(pad);
+  add(bx(.2,.2,.04),M.readerW,15.75,.75,1.0,posHW);
+
+  /* ---------- overhead readers (run) ---------- */
+  var OVH=[[1,-4],[6,-4],[11,-4],[1,1.5],[6,1.5],[11,1.5],[-10.8,-3],[-10.8,3],[-7.2,-3],[-7.2,3],[16.4,2.6]];
+  var overhead=new THREE.Group(); scene.add(overhead);
+  var domeMat=new THREE.MeshBasicMaterial({color:COL.azure,transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide,toneMapped:false});
+  var domeGeo=new THREE.SphereGeometry(3.0,28,12,0,Math.PI*2,0,Math.PI/2);
+  var readers=OVH.map(function(p){
+    var g=new THREE.Group(); g.position.set(p[0],3.55,p[1]); overhead.add(g);
+    add(new THREE.CylinderGeometry(.015,.015,.6,6),M.steel,0,.3,0,g,true);
+    add(new THREE.CylinderGeometry(.33,.33,.04,28),M.readerW,0,.02,0,g);
+    var dm=add(new THREE.SphereGeometry(.33,28,12,0,Math.PI*2,Math.PI/2,Math.PI/2),M.readerW,0,0,0,g); dm.scale.y=.42;
+    add(new THREE.CylinderGeometry(.06,.06,.012,16),std('#9aa0aa',.4),0,-.14,0,g,true);
+    var d=new THREE.Mesh(domeGeo,domeMat); d.rotation.x=Math.PI; g.add(d);
+    var cand=[];
+    for(var i=0;i<NB;i++){ var dx=boxPos[i*3]-p[0], dz=boxPos[i*3+2]-p[1]; if(dx*dx+dz*dz<7.5) cand.push(['b',i]); }
+    for(var j=0;j<NS;j++){ var ex=shoePos[j*3]-p[0], ez=shoePos[j*3+2]-p[1]; if(ex*ex+ez*ez<7.5) cand.push(['s',j]); }
+    return {g:g,cand:cand,x:p[0],z:p[1]};
+  });
+  overhead.scale.set(1,1,1); overhead.visible=false;
+
+  /* ---------- zone overlays ---------- */
+  var ZR={recv:[-22,-15],stock:[-15,-3],floor:[-3,13],check:[13,20]};
+  var zoneFx={};
+  Object.keys(ZR).forEach(function(k){
+    var x0=ZR[k][0],x1=ZR[k][1],w=x1-x0;
+    var om=new THREE.MeshBasicMaterial({map:reTex(hatchTex,w/.9,16/.9),transparent:true,opacity:0,depthWrite:false,toneMapped:false});
+    var ov=new THREE.Mesh(new THREE.PlaneGeometry(w-.08,15.92),om); ov.rotation.x=-Math.PI/2; ov.position.set((x0+x1)/2,.02,0); ov.renderOrder=2; scene.add(ov);
+    var bm=new THREE.MeshBasicMaterial({color:COL.azure,transparent:true,opacity:0,toneMapped:false,depthWrite:false});
+    var t=.07, cx=(x0+x1)/2;
+    [[w-.3,t,cx,-7.85],[w-.3,t,cx,7.85],[t,15.7,x0+.15,0],[t,15.7,x1-.15,0]].forEach(function(b){ var m=new THREE.Mesh(new THREE.PlaneGeometry(b[0],b[1]),bm); m.rotation.x=-Math.PI/2; m.position.set(b[2],.03,b[3]); m.renderOrder=3; scene.add(m); });
+    zoneFx[k]={om:om,bm:bm,o:0,b:0};
+  });
+  var TINT={blind:.5,handheld:.28,sku:.34,counts:.08,live:0,offline:.45}, BORD={blind:0,handheld:.0,sku:0,counts:.55,live:.9,offline:.9};
+
+  /* ---------- system of record node (the readable panel is HTML, top right of the stage) ---------- */
+  var dash=new THREE.Group(); dash.position.set(-9.5,7.6,-9.4); scene.add(dash);
+  var C_NODE0=C('#82839f'); var nodeMat=new THREE.MeshBasicMaterial({color:C_NODE0.clone(),toneMapped:false});
+  var nodeCore=new THREE.Mesh(new THREE.OctahedronGeometry(.7),nodeMat); dash.add(nodeCore);
+  var nodeRing=new THREE.Mesh(new THREE.TorusGeometry(1.25,.06,8,48),nodeMat); nodeRing.rotation.x=Math.PI/2; dash.add(nodeRing);
+  var nodeRing2=new THREE.Mesh(new THREE.TorusGeometry(1.7,.03,8,48),new THREE.MeshBasicMaterial({color:C('#1898ff'),transparent:true,opacity:0,toneMapped:false})); nodeRing2.rotation.x=Math.PI/2; dash.add(nodeRing2);
+  /* the hub above the store is where reads land; a connector line carries the story into the readable panel */
+  var C_HUB_D=C('#2a2f63'), C_HUB_L=C('#d6dcff');
+  var hubMats=[];
+  for(var hp=0;hp<3;hp++){ var hm=new THREE.MeshLambertMaterial({color:C_HUB_D.clone()}); hubMats.push(hm);
+    var hb=new THREE.Mesh(bx(3.4-hp*.8,.3,3.4-hp*.8),hm); hb.position.y=-1.3+hp*.44; dash.add(hb); }
+  nodeCore.position.y=.35; nodeCore.scale.setScalar(.8);
+  nodeRing.position.y=-.9; nodeRing.scale.setScalar(1.55);
+  nodeRing2.position.y=-.9; nodeRing2.scale.setScalar(1.3);
+  var hubPulse=0;
+  /* ---------- the system of record as a wall-mounted ops monitor ---------- */
+  dash.children.forEach(function(c){ c.visible=false; });
+  dash.position.set(-21.97,2.45,-5.6); dash.rotation.y=Math.PI/2; /* on the receiving wall, facing the camera */
+  var MON_W=4.2, MON_H=2.36;
+  var monBezel=new THREE.Mesh(bx(MON_W+.16,MON_H+.16,.07), std('#0c0d12',.35,.3)); monBezel.position.z=.04; monBezel.castShadow=true; dash.add(monBezel);
+  var monGlowMat=new THREE.MeshBasicMaterial({color:COL.azure,transparent:true,opacity:0,toneMapped:false,depthWrite:false});
+  var monGlow=new THREE.Mesh(new THREE.PlaneGeometry(MON_W+.5,MON_H+.5),monGlowMat); monGlow.position.z=.003; dash.add(monGlow);
+  var sC=document.createElement('canvas'); sC.width=1024; sC.height=576; var sg=sC.getContext('2d');
+  var sTex=new THREE.CanvasTexture(sC); sTex.encoding=THREE.sRGBEncoding; sTex.anisotropy=maxAniso;
+  var monScreen=new THREE.Mesh(new THREE.PlaneGeometry(MON_W,MON_H), new THREE.MeshBasicMaterial({map:sTex,toneMapped:false}));
+  monScreen.position.z=.08; dash.add(monScreen);
+  function rr2(x,y,w,h,r){ sg.beginPath(); sg.moveTo(x+r,y); sg.arcTo(x+w,y,x+w,y+h,r); sg.arcTo(x+w,y+h,x,y+h,r); sg.arcTo(x,y+h,x,y,r); sg.arcTo(x,y,x+w,y,r); sg.closePath(); }
+  function drawScreen(){
+    var w=1024,h=576, g=sg; g.clearRect(0,0,w,h);
+    var bg=g.createLinearGradient(0,0,0,h); bg.addColorStop(0,'#0a0c3a'); bg.addColorStop(1,'#000021'); g.fillStyle=bg; g.fillRect(0,0,w,h);
+    var live=stage>0;
+    g.fillStyle=live?'#1898ff':'#82839f'; g.fillRect(0,0,w,8);
+    g.textBaseline='alphabetic'; g.textAlign='left'; g.fillStyle='#9fa1c4'; g.font='600 30px Inter, sans-serif';
+    g.fillText(stage===2?'Chain system of record':'Inventory system of record',44,66);
+    g.textAlign='right'; g.font='500 26px "IBM Plex Mono", monospace'; g.fillStyle=live?'#7cc4ff':'#82839f';
+    g.fillText(live?'\u25CF STREAMING':'\u25CB MANUAL COUNT',w-44,64);
+    g.textAlign='left';
+    var big=['Unverified','Live','98%'][stage];
+    if(stage===0) g.fillStyle='#ffb547'; else { var gt=g.createLinearGradient(44,0,520,0); gt.addColorStop(0,'#9a7bff'); gt.addColorStop(1,'#1898ff'); g.fillStyle=stage===2?'#ffffff':gt; }
+    g.font='600 118px "Lexend Exa", sans-serif'; g.fillText(big,40,208);
+    g.fillStyle='#c9cbe0'; g.font='400 30px Inter, sans-serif';
+    g.fillText(['Updates only at the next manual count','Unit-level feed, dock to register','Inventory visibility at scale'][stage],44,256);
+    g.textAlign='right'; g.fillStyle='#9fa1c4'; g.font='500 28px Inter, sans-serif'; g.fillText('Reads in system',w-44,146);
+    g.fillStyle=stage===0?'#ffb547':'#ffffff'; g.font='500 76px "IBM Plex Mono", monospace'; g.fillText(fmt(inSysShown),w-44,226);
+    var cols={blind:'#ff7a85',handheld:'#ffb547',sku:'#ffb547',counts:'#a99bff',live:'#4fb3ff'};
+    var keys=['recv','stock','floor','check'], tw=(w-88-36)/4;
+    cols.offline='#ff5a6a';
+    keys.forEach(function(k,i){ var x=44+i*(tw+12), y=312, st=zst(k), c=cols[st];
+      rr2(x,y,tw,220,18); g.fillStyle='rgba(255,255,255,0.05)'; g.fill(); g.lineWidth=3; g.strokeStyle=c+'aa'; g.stroke();
+      g.fillStyle=c; rr2(x,y,tw,12,6); g.fill();
+      g.textAlign='left'; g.fillStyle='#ffffff'; g.font='600 34px Inter, sans-serif'; g.fillText(ZNAME[k],x+20,y+74);
+      g.fillStyle=c; g.font='600 32px Inter, sans-serif'; g.fillText(SLABEL[st],x+20,y+128);
+      var bars=st==='live'?1:st==='counts'?.6:(st==='blind'||st==='offline')?.06:.3;
+      g.fillStyle='rgba(255,255,255,0.08)'; rr2(x+20,y+164,tw-40,18,9); g.fill();
+      g.fillStyle=c; rr2(x+20,y+164,Math.max(18,(tw-40)*bars),18,9); g.fill(); });
+    sTex.needsUpdate=true;
+  }
+  drawScreen(); if(document.fonts && document.fonts.ready) document.fonts.ready.then(drawScreen);
+  var dashWantY=2.45, dashWantS=1;
+  function drawDash(){ if(typeof renderSOR==='function') renderSOR(); }
+  drawDash();
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(drawDash);
+
+  /* ---------- packets ---------- */
+  var pktGeo=new THREE.SphereGeometry(.08,10,8), pkts=[];
+  for(var pk=0;pk<200;pk++){ var pm=new THREE.MeshBasicMaterial({color:COL.azure,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,toneMapped:false});
+    var po=new THREE.Mesh(pktGeo,pm); po.visible=false; po.renderOrder=7; scene.add(po); pkts.push({o:po,m:pm,a:new V3(),live:false,t:0,sp:1,delay:0,kind:'dash'}); }
+  var handW=new V3(), shW=new V3(), axis=new V3(), dashA=new V3(), tmpV=new V3(), tmpV2=new V3(), ctrlV=new V3(), upV=new V3();
+  function spawn(from,kind,delay){ for(var i=0;i<pkts.length;i++){ var p=pkts[i]; if(!p.live){ p.live=true; p.a.copy(from); p.kind=kind; p.t=0; p.delay=delay||0;
+    p.sp=kind==='hand'?1.7:(.5+Math.random()*.25); p.m.color.copy(kind==='hand'?COL.violet:(Math.random()<.5?COL.azure:COL.peri)); return; } } }
+  function bez(a,b,t,out){ var d=a.distanceTo(b); ctrlV.addVectors(a,b).multiplyScalar(.5); ctrlV.y+=d*.35+.5; var u=1-t;
+    out.set(u*u*a.x+2*u*t*ctrlV.x+t*t*b.x, u*u*a.y+2*u*t*ctrlV.y+t*t*b.y, u*u*a.z+2*u*t*ctrlV.z+t*t*b.z); return out; }
+
+  /* ---------- reads ---------- */
+  var tc=new THREE.Color();
+  function read(x,y,z,viaHand){
+    captured++;
+    tmpV.set(x,y,z);
+    if(stage===0){ if(viaHand){ unsynced++; if(Math.random()<.4) spawn(tmpV,'hand'); } }
+    else { inSys++; if(Math.random()<.32) spawn(tmpV,'dash'); }
+  }
+  function flashBox(i,viaHand){ if(boxFlash[i]>.15) return; if(boxFlash[i]<=0) boxActive.push(i); boxFlash[i]=1; read(boxPos[i*3],boxPos[i*3+1],boxPos[i*3+2],viaHand); }
+  function flashShoe(i,viaHand){ if(shoeFlash[i]>.15) return; if(shoeFlash[i]<=0) shoeActive.push(i); shoeFlash[i]=1; read(shoePos[i*3],shoePos[i*3+1],shoePos[i*3+2],viaHand); }
+  function decay(arr,act,base,inst,dt,col){ if(!act.length) return;
+    for(var j=act.length-1;j>=0;j--){ var i=act[j]; arr[i]-=dt*1.25; var f=Math.max(0,arr[i]); tc.copy(base[i]).lerp(col,f*.92); inst.setColorAt(i,tc); if(arr[i]<=0){ arr[i]=0; act.splice(j,1); } }
+    inst.instanceColor.needsUpdate=true; }
+  function coneScan(arm,len,rad,cand,isBox,viaHand,prob){
+    arm.hand.getWorldPosition(handW); arm.g.getWorldPosition(shW); axis.subVectors(handW,shW).normalize();
+    var tanA=rad/len, P=isBox?boxPos:shoePos;
+    for(var n=0;n<cand.length;n++){ var i=cand[n];
+      tmpV2.set(P[i*3]-handW.x,P[i*3+1]-handW.y,P[i*3+2]-handW.z);
+      var al=tmpV2.dot(axis); if(al<.1||al>len) continue;
+      var perp2=tmpV2.lengthSq()-al*al, r=al*tanA;
+      if(perp2<r*r && Math.random()<prob){ if(isBox) flashBox(i,viaHand); else flashShoe(i,viaHand); } } }
+
+  /* ---------- chain (run) ---------- */
+  var chain=[], chainGroup=new THREE.Group(); scene.add(chainGroup);
+  var stripeCols=['#b8895a','#24262c','#e6e3dc','#2f62b3','#c2382e'].map(function(h){return std(h,.8);});
+  var miniFloor=std('#cdb796',.6);
+  for(var mi=0;mi<9;mi++){
+    var ang=(mi/9)*Math.PI*2+.3, R=44;
+    var g=new THREE.Group(); g.position.set(-1+Math.cos(ang)*R,0,Math.sin(ang)*R*.82); g.rotation.y=-ang+Math.PI/2; chainGroup.add(g);
+    add(bx(11,.7,6.5),M.base,0,-.35,0,g,true);
+    var mf=add(new THREE.PlaneGeometry(10.6,6.1),miniFloor,0,.004,0,g,true); mf.rotation.x=-Math.PI/2;
+    add(bx(10.6,2.4,.14),M.wallSales,0,1.2,-3.05,g,true); add(bx(.14,2.4,6.1),M.wall,-5.3,1.2,0,g,true);
+    for(var r=0;r<3;r++){ add(bx(.7,1.9,3.8),M.steel,-4+r*1.2,.95,-.5,g,true); for(var l=0;l<4;l++) add(bx(.74,.16,3.7),stripeCols[(r+l+mi)%5],-4+r*1.2,.3+l*.45,-.5,g,true); }
+    add(bx(1.7,.7,.8),M.white,1.4,.35,-1.4,g,true); add(bx(1.7,.7,.8),M.white,3.4,.35,-1.4,g,true); add(bx(.9,1,2.2),M.counter,3.9,.5,1.7,g,true);
+    var md=new THREE.Mesh(new THREE.SphereGeometry(2.6,20,10,0,Math.PI*2,0,Math.PI/2),domeMat); md.rotation.x=Math.PI; md.position.set(1,2.9,0); g.add(md);
+    g.scale.setScalar(.001); g.visible=false;
+    chain.push({g:g,t:Math.random(),lvl:0});
+  }
+
+  /* ---------- labels ---------- */
+  var labelHost=$('labels'), labelEls={};
+  var ANCH={recv:new V3(-17.0,2.6,3.0),stock:new V3(-9,3.6,-6.4),floor:new V3(5,3.4,-6),check:new V3(16.6,2.8,-1.2),sys:new V3()};
+  ZK.forEach(function(k){ var el=document.createElement('button'); el.type='button'; el.className='zlabel';
+    el.innerHTML='<i></i><span>'+ZNAME[k]+'</span><em></em>'; el.addEventListener('click',function(){ if(tourOn) stopTour(); showZone(k); focus(k); $('now').hidden=true; });
+    labelHost.appendChild(el); labelEls[k]=el; });
+  var HWL=[{k:'portal',a:new V3(PORTAL_X,3.4,JZ),min:1},{k:'ovh',a:new V3(6,4.9,1.5),min:2}], hwEls={};
+  HWL.forEach(function(h){ var el=document.createElement('button'); el.type='button'; el.className='zlabel hw';
+    el.innerHTML='<i></i><span>'+HW[h.k].label+'</span><em>See device</em>';
+    el.addEventListener('click',function(){ if(tourOn) stopTour(); showHW(h.k); focus(h.k==='portal'?'recv':'floor'); });
+    labelHost.appendChild(el); hwEls[h.k]=el; });
+  function refreshLabels(){ ZK.forEach(function(k){ var st=zst(k); labelEls[k].setAttribute('data-s',st); labelEls[k].querySelector('em').textContent=SLABEL[st]; }); }
+  refreshLabels();
+  var hh=$('hh'), headW=new V3();
+
+  /* ---------- camera focus ---------- */
+  var STAGECAM=[{t:[-8.6,.8,0],z:1.5},{t:[-1,1,0],z:.95},{t:[-1,4,0],z:.42}];
+  var FOCUS={recv:{t:[-18.6,1,0],z:2.1},stock:{t:[-8.4,1,0],z:2.0},floor:{t:[5,1,-2.4],z:1.6},check:{t:[16.4,1,1.5],z:2.3},sys:{t:[-1,7.5,-6.5],z:1.35},chain:{t:[-1,2,0],z:.38}};
+  var tween=null;
+  function flyTo(t,z,dur){ tween={from:target.clone(),to:new V3(t[0],t[1],t[2]),z0:camera.zoom,z1:z*fit(),t:0,d:dur||1.5}; }
+  function focus(k){
+    if(k==='stage'){ var s=STAGECAM[stage]; flyTo(s.t,s.z); }
+    else if(k==='sys'){ flyTo([-20,2.2,-4.5], 2.2); }
+    else if(FOCUS[k]){ flyTo(FOCUS[k].t,FOCUS[k].z); }
+  }
+  function ease(t){ return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2; }
+  function backOut(t){ var c1=1.4,c3=c1+1; return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2); }
+
+  /* ---------- stage levels ---------- */
+  var floorT=0;
+  var lv={portal:0,pos:0,ovh:0,floorA:0,chain:0}, runT=0, runTok=0, moveTok=-1;
+  function userMovedSince(tok){ return moveTok===tok; }
+  function onStage(i,fromTour){
+    refreshLabels(); drawDash();
+    dashWantY = 2.45; dashWantS = 1; drawScreen();
+    if(!fromTour){
+      if(i===2){ /* show the overhead readers in this store first, then pull back to the chain */
+        flyTo([3,1,-1],1.15,1.4); var tok=++runTok;
+        setTimeout(function(){ if(stage===2 && tok===runTok && !tourOn && !userMovedSince(tok)) focus('stage'); },4200);
+      } else focus('stage');
+    }
+    if(i===2){ runT=-3.4; }
+    cartons.forEach(function(c){ c.userData.read=false; });
+  }
+  function syncBurst(n){ hand0(); var m=Math.min(40,n); for(var i=0;i<m;i++) spawn(handW,'dash',i*.045); }
+  function hand0(){ A.armR.hand.getWorldPosition(handW); }
+  function setAuto(){ if(controls) controls.autoRotate=false; }
+
+  /* ---------- loop ---------- */
+  var last=performance.now(), clock=0, dashT=0, posT=2, jackX=-21.4, jackDir=1, jackHold=0, Az=0, Adir=1, Fx=1, Fdir=1, Apause=0, Fpause=0;
+  var _p=new V3();
+  function proj(v,el){ _p.copy(v).project(camera); var x=(_p.x*.5+.5)*W, y=(-_p.y*.5+.5)*H;
+    var on=x>-80&&x<W+80&&y>-30&&y<H+30; el.style.display=on?'':'none'; if(on){ el.style.left=x+'px'; el.style.top=y+'px'; } return on; }
+
+  /* connector from the hub (in 3D) to the system-of-record panel (HTML) */
+  var linkP=$('link-p'), linkC=$('link-c'), stageEl=$('stage'), _h=new V3(), dashOff=0;
+  function drawLink(){
+    var sor=$('sor');
+    if(!sor || sor.offsetParent===null){ linkP.setAttribute('d',''); linkC.setAttribute('r',0); return; }
+    _h.copy(dash.position).project(camera);
+    var hx=(_h.x*.5+.5)*W, hy=(-_h.y*.5+.5)*H;
+    var sr=stageEl.getBoundingClientRect(), pr=sor.getBoundingClientRect();
+    var px=pr.left-sr.left, py=pr.top-sr.top+Math.min(64,pr.height/2);
+    if(hx>px-20){ linkP.setAttribute('d',''); linkC.setAttribute('r',0); return; }
+    var mx=(hx+px)/2;
+    linkP.setAttribute('d','M'+hx.toFixed(1)+' '+hy.toFixed(1)+' C'+mx.toFixed(1)+' '+hy.toFixed(1)+' '+mx.toFixed(1)+' '+py.toFixed(1)+' '+px.toFixed(1)+' '+py.toFixed(1));
+    linkP.setAttribute('class', stage>0?'live':'');
+    linkC.setAttribute('cx',px.toFixed(1)); linkC.setAttribute('cy',py.toFixed(1)); linkC.setAttribute('r',4);
+    linkC.setAttribute('class', stage>0?'live':'');
+    if(stage>0 && !REDUCED){ dashOff=(dashOff-1.2)%1000; linkP.style.strokeDashoffset=dashOff; }
+  }
+  function tick(now){
+    var dt=Math.min((now-last)/1000,.05); last=now; clock+=dt;
+    dwell[stage]+=dt;
+    if(tourOn){ if(tourAuto && performance.now()-lastInteract>2500){ tourT+=dt; $('card-prog').style.width=Math.min(100,tourT/TOUR[tourIdx].d*100)+'%'; if(tourT>TOUR[tourIdx].d) goStep(tourIdx+1); } }
+    else { idleT+=dt; if(idleT>60) startTour(true); }
+    var k=1-Math.pow(.002,dt), slow=REDUCED?.45:1;
+
+    /* hardware levels */
+    lv.portal+=( (stage>=1?1:0)-lv.portal)*k;
+    lv.pos+=((stage>=1?1:0)-lv.pos)*k;
+    lv.ovh+=((stage>=2?1:0)-lv.ovh)*k;
+    lv.floorA+=((stage>=1?1:0)-lv.floorA)*k;
+    portal.scale.y=Math.max(.001,lv.portal<.999?backOut(lv.portal):1); portal.visible=lv.portal>.01;
+    fieldMat.opacity=OFF.portal?0:lv.portal*(.07+.05*Math.sin(clock*4));
+    padMat.opacity=OFF.pos?0:lv.pos*(.22+.12*Math.sin(clock*3)); posHW.visible=lv.pos>.01;
+    overhead.visible=lv.ovh>.01; readers.forEach(function(r,i){ var s=Math.max(.001,Math.min(1,lv.ovh*1.3-i*.025)); r.g.scale.setScalar(1.45*(s<1?backOut(s):1)); });
+    domeMat.opacity=OFF.ovh?0:lv.ovh*(.05+.03*Math.sin(clock*2.2));
+    Fp.g.visible=lv.floorA>.02; Fp.g.scale.setScalar(Math.max(.001,lv.floorA));
+
+    /* zone overlays */
+    Object.keys(zoneFx).forEach(function(z){ var st=zst(z), f=zoneFx[z]; f.o+=(TINT[st]-f.o)*k; f.b+=(BORD[st]-f.b)*k; f.om.opacity=f.o; f.bm.opacity=f.b*(.75+.25*Math.sin(clock*2)); f.bm.color.copy(st==='counts'?COL.peri:st==='offline'?COL.red:COL.azure); });
+
+    /* associate A: stockroom handheld sweep */
+    if(Apause>0){ Apause-=dt; animWalk(A,dt,0,0); }
+    else { Az+=Adir*dt*.42*slow; if(Az>4.6){Az=4.6;Adir=-1;Apause=1.2;} if(Az<-4.6){Az=-4.6;Adir=1;Apause=1.2;} animWalk(A,dt,7*slow,.22); }
+    A.g.position.set(AX,0,Az);
+    A.armR.g.rotation.x=-1.45+Math.sin(clock*1.25*slow)*.5; A.armL.g.rotation.x=.05;
+    Acone.a.material.opacity=.13+.05*Math.sin(clock*9);
+    coneScan(A.armR,3.0,1.3,coneCand,true,true,.32*slow);
+
+    /* floor associate (walk+) */
+    if(lv.floorA>.5){
+      if(Fpause>0){ Fpause-=dt; animWalk(Fp,dt,0,0); }
+      else { Fx+=Fdir*dt*.4*slow; if(Fx>10.5){Fx=10.5;Fdir=-1;Fpause=1.2;} if(Fx<-1.2){Fx=-1.2;Fdir=1;Fpause=1.2;} animWalk(Fp,dt,7*slow,.22); }
+      Fp.g.position.set(Fx,0,-6.55); Fp.armR.g.rotation.x=-1.4+Math.sin(clock*1.1*slow)*.45;
+      Fcone.a.material.opacity=(stage===1&&OFF.floor)?0:.12+.05*Math.sin(clock*8); Fcone.b.material.opacity=(stage===1&&OFF.floor)?0:.12;
+      if(stage===1 && !OFF.floor) coneScan(Fp.armR,2.6,1.15,wallCand,false,true,.3*slow);
+      if(stage===1 && OFF.floor){ floorT+=dt; MISSED.floor=Math.floor(floorT); } else floorT=0;
+    }
+
+    /* receiving jack */
+    if(jackHold>0){ jackHold-=dt; }
+    else {
+      jackX+=jackDir*dt*.75*slow;
+      if(jackDir>0 && jackX>-15.9){ jackX=-15.9; jackDir=-1; jackHold=1.4; cartons.forEach(function(c){ c.userData.go=true; }); }
+      if(jackDir<0 && jackX<-21.4){ jackX=-21.4; jackDir=1; jackHold=1.0; cartons.forEach(function(c){ c.userData.go=false; c.userData.read=false; }); }
+    }
+    jack.position.set(jackX,0,JZ);
+    pusher.g.position.set(jackX-1.35,0,JZ); face(pusher,jackDir>0?1:-1,0); if(jackDir<0){ pusher.g.position.x=jackX-1.6; }
+    animWalk(pusher,dt,jackHold>0?0:6.5*slow,jackHold>0?0:.25);
+    cartons.forEach(function(c){
+      var s=c.scale.x, want=c.userData.go?0.001:1; s+=(want-s)*Math.min(1,dt*5); c.scale.setScalar(Math.max(.001,s)); c.visible=s>.01;
+      c.getWorldPosition(tmpV);
+      if(lv.portal>.6 && jackDir>0 && !c.userData.read && Math.abs(tmpV.x-PORTAL_X)<.3 && c.visible){ c.userData.read=true; if(OFF.portal){ MISSED.portal++; } else { c.userData.f=1; read(tmpV.x,tmpV.y,tmpV.z,false); fieldMat.opacity=.3; } }
+      c.userData.f=Math.max(0,c.userData.f-dt*1.2);
+      c.material.emissive.copy(COL.azure).multiplyScalar(c.userData.f*.85);
+    });
+
+    /* POS sale */
+    if(lv.pos>.6){ posT-=dt; if(posT<=0){ posT=3.6+Math.random()*2.2; if(OFF.pos){ MISSED.pos++; } else { custBox.userData.f=1; padMat.opacity=.8; custBox.getWorldPosition(tmpV); read(tmpV.x,tmpV.y,tmpV.z,false); spawn(tmpV,'dash'); } } }
+    custBox.userData.f=Math.max(0,(custBox.userData.f||0)-dt*1.1);
+    custBox.material.emissive.copy(COL.azure).multiplyScalar(custBox.userData.f*.9);
+
+    /* overhead continuous reads */
+    if(lv.ovh>.8){ for(var ri=0;ri<readers.length;ri++){ var r=readers[ri]; if(r.cand.length && Math.random()<dt*4.5*slow){ if(OFF.ovh && r.x>-3.5 && r.x<13){ MISSED.ovh+=2; continue; } for(var q=0;q<2;q++){ var c=r.cand[(Math.random()*r.cand.length)|0]; if(c[0]==='b') flashBox(c[1],false); else flashShoe(c[1],false); } } } }
+
+    /* shoppers idle */
+    shopper1.head.rotation.y=Math.sin(clock*.5)*.35; shopper1.body.rotation.y=Math.sin(clock*.3)*.08;
+    shopper2.head.rotation.y=Math.sin(clock*.4+1)*.4; shopper2.body.position.y=Math.sin(clock*1.2)*.006;
+    cashier.armR.g.rotation.x=-.75+Math.sin(clock*2.1)*.08;
+
+    /* chain */
+    if(stage===2) runT+=dt;
+    storesLive=1;
+    chain.forEach(function(m,i){ var want=stage===2?Math.max(0,Math.min(1,(runT-.4-i*.18)/.7)):0;
+      m.lvl+=(want-m.lvl)*Math.min(1,dt*(stage===2?6:4)); var s=m.lvl; m.g.visible=s>.01; m.g.scale.setScalar(Math.max(.001,s<.999?backOut(s):1));
+      if(s>.9){ storesLive++; m.t-=dt; if(m.t<=0){ m.t=.5+Math.random()*1.1; m.g.localToWorld(tmpV.set(1,2.9,0)); spawn(tmpV,'dash'); captured+=3; inSys+=3; } } });
+
+    /* flashes */
+    decay(boxFlash,boxActive,boxBase,boxes,dt,stage===0?COL.flashV:COL.flash);
+    decay(shoeFlash,shoeActive,shoeBase,uppers,dt,stage===0?COL.flashV:COL.flash);
+
+    /* dashboard */
+    dash.position.y+=(dashWantY-dash.position.y)*k*.8; var ds=dash.scale.x+(dashWantS-dash.scale.x)*k*.8; dash.scale.setScalar(ds);
+    nodeMat.color.copy(stage===0?C_NODE0:COL.azure); hubPulse=Math.max(0,hubPulse-dt*2.5);
+    nodeRing2.material.opacity=stage>0?Math.min(1,.3+.2*Math.sin(clock*3)+hubPulse*.7):0; nodeRing2.scale.setScalar(1.3+hubPulse*.35);
+    monGlowMat.opacity = stage>0 ? Math.min(.9,.18+.1*Math.sin(clock*3)+hubPulse*.6) : 0;
+    if(!REDUCED){ nodeCore.rotation.y+=dt*.6; }
+    dashA.copy(dash.position);
+    inSysShown+=(inSys-inSysShown)*Math.min(1,dt*3); if(Math.abs(inSys-inSysShown)<.5) inSysShown=inSys;
+    dashT-=dt; if(dashT<=0){ dashT=.2; tickSOR(); drawScreen(); }
+
+    /* packets */
+    A.armR.hand.getWorldPosition(handW);
+    var pscale=Math.max(1,1.15/camera.zoom);
+    for(var pi2=0;pi2<pkts.length;pi2++){ var p=pkts[pi2]; if(!p.live) continue;
+      if(p.delay>0){ p.delay-=dt; p.o.visible=false; continue; }
+      p.t+=dt*p.sp; if(p.t>=1){ p.live=false; p.o.visible=false; if(p.kind!=='hand') hubPulse=1; continue; }
+      bez(p.a, p.kind==='hand'?handW:dashA, p.t, p.o.position); p.o.visible=true; p.o.scale.setScalar(pscale*(1-.3*p.t)); p.m.opacity=Math.min(1,(1-p.t)*2.5); }
+
+    /* camera */
+    if(tween){ tween.t+=dt/tween.d; var e=ease(Math.min(1,tween.t)); tmpV.lerpVectors(tween.from,tween.to,e); tmpV2.subVectors(tmpV,target);
+      camera.position.add(tmpV2); target.copy(tmpV); camera.zoom=tween.z0+(tween.z1-tween.z0)*e; camera.updateProjectionMatrix(); if(tween.t>=1) tween=null; }
+    if(controls) controls.update(); else camera.lookAt(target);
+
+    renderer.render(scene,camera);
+
+    /* overlays */
+    ANCH.sys.copy(dash.position); ANCH.sys.y+=1.6; ANCH.sys.x+=.3;
+    var far=camera.zoom<.7*fit();
+    ZK.forEach(function(z){ if(far && z!=='sys'){ labelEls[z].style.display='none'; } else proj(ANCH[z],labelEls[z]); });
+    HWL.forEach(function(h){ var el=hwEls[h.k]; if(stage<h.min || far){ el.style.display='none'; } else proj(h.a,el); });
+    drawLink();
+    A.head.getWorldPosition(headW); headW.y+=.45;
+    var hhTxt = stage===0 ? 'On this TC22R <b>'+fmt(unsynced)+'</b> reads<u>See device</u>' : 'TC22R synced, <b>0</b> waiting<u>See device</u>';
+    if(stage<2){ hh.hidden=false; hh.setAttribute('data-s',stage===0?'held':'sync'); if(hh._t!==hhTxt){ hh.innerHTML=hhTxt; hh._t=hhTxt; } proj(headW,hh); }
+    else hh.hidden=true;
+
+    $('hud-cap').textContent=fmt(captured); $('hud-sys').textContent=fmt(inSysShown);
+
+    requestAnimationFrame(tick);
+  }
+
+  var userMoved=false;
+  if(controls) controls.addEventListener('start', function(){ userMoved=true; tween=null; moveTok=runTok; });
+  function onResize(){ W=Math.max(1,host.clientWidth); H=Math.max(1,host.clientHeight); renderer.setSize(W,H); var a=W/H;
+    camera.left=-F*a/2; camera.right=F*a/2; camera.top=F/2; camera.bottom=-F/2;
+    if(!userMoved && !tween) camera.zoom=STAGECAM[stage].z*fit();
+    camera.updateProjectionMatrix(); }
+  setTimeout(onResize,60); setTimeout(onResize,600);
+  if(window.ResizeObserver) new ResizeObserver(onResize).observe(host); else window.addEventListener('resize',onResize);
+
+  requestAnimationFrame(tick);
+  return {onStage:onStage, focus:focus, setAuto:setAuto, syncBurst:syncBurst, refresh:function(){ refreshLabels(); drawScreen(); }};
+}
+
+try{
+  if(!window.THREE) throw new Error('three missing');
+  W3=initWorld();
+}catch(err){
+  $('nogl').hidden=false; $('btn-tour').hidden=true; $('btn-reset').hidden=true;
+  if(window.console) console.warn(err);
+}
+})();
+</script>
+
+</body>
+</html>
